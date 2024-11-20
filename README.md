@@ -80,10 +80,11 @@ __Si todo salio bien, ya podrías ver tu página =)__
 > El anterior comando te abrirá un nuevo archivo donde deberás poner los cambios que hiciste, de forma general, como lo he hecho en los primeros commits
 ----
 __*IMPORTANTE*__
-- Antes de subir los cambios, hacer un git pull para estar en la versión más reciente del proyecto 
 __La primera vez, y solo la primera vez que se vaya a hacer un commit, correr el siguiente comando para vincular con el repositorio__
 ``git remote add FCA-Proyecto-Implementacion https://github.com/amezcua04s/FCA-Proyecto-Implementacion-01.git``
 
+- Antes de subir los cambios, hacer un git pull para estar en la versión más reciente del proyecto 
 ``git pull --no-rebase``
 
-``git push --set-upstream``
+- Para subir los cambios
+``git push --set-upstream FCA-Proyecto-Implementacion main``
