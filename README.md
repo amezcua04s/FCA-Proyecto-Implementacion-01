@@ -89,7 +89,7 @@ Renombrar el nombre de la rama donde trabajarás como main
 ## Para subir cambios  
 Para hacer un commit de todos los cambios, debes estar en la carpeta donde se encuentren todos los archivos del proyecto
 
-```git add .``
+``git add .``
 > Esto guardará los cambios y permitirá que puedas subirlos al repositorio
 
 ``git commit``

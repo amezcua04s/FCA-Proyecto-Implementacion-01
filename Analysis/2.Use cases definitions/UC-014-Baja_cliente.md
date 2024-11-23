@@ -5,7 +5,7 @@
  * 
 
 ## Precondiciones
- * 
+ * El administrador debe estar autenticado en el sistema
 
 ## Postcondiciones
  * 

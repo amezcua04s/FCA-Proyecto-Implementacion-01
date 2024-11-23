@@ -1,20 +1,20 @@
 # ID
- - UC - 004: Iniciar sesión
-   
+ - UC - 00X: 
+ 
 ## Actores
  * 
 
 ## Precondiciones
- * 
+ * El usuario debe estar autenticado en el sistema
 
 ## Postcondiciones
  * 
    
 ## Tipo 
- * Funcional
+ * 
 
 ## Partes interesadas e intereses:
-- Un usuario con credenciales previamente registradas en el sistema desea hacer uso del sistema mediante el uso de sesión, el cuál requiere sus credenciales
+- 
 
 ## Breve descripción
 

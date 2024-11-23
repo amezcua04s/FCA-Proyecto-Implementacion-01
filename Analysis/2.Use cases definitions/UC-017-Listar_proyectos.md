@@ -1,20 +1,20 @@
 # ID
- - UC - 005: Cerrar sesión
-   
+ - UC - 00X: 
+ 
 ## Actores
  * 
 
 ## Precondiciones
- * 
+ * El usuario debe estar autenticado en el sistema
 
 ## Postcondiciones
  * 
    
 ## Tipo 
- * Funcional
+ * 
 
 ## Partes interesadas e intereses:
-- Un usuario que se encuentra autenticado en ele sistema desea finalizar su sesión
+- 
 
 ## Breve descripción
 
