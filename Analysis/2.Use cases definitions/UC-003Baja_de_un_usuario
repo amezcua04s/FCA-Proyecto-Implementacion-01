@@ -1,0 +1,33 @@
+# ID
+ - UC - 003: Baja de un usuario
+   
+## Actores
+ * Administrador
+
+## Precondiciones
+ * El administrador, quién dará de baja al usuario, debé estar autenticado en el sistema
+ * El usuario que desean dar de baja debe estar registrado en el sistema
+
+## Postcondiciones
+ * El usuario que se dará de baja cambiará su estatus a "inactivo", pero los datos seguirán existiendo
+   
+## Tipo 
+ * Secundario
+
+## Partes interesadas e intereses:
+- El administrador desea dar de baja el perfil de un usuario 
+
+## Breve descripción
+El administrador dará de baja a un usuario del sistema, esto gracias a sus permisos
+
+## Disparador
+El administrador, en la página dode se encuentran todos los usuarios, seleccionará el botón de "BAJA" en el usuario correspondiente 
+
+## Flujo normal de eventos (Happy Path)
+1. 
+
+
+
+## Sub-flujo 
+
+### Excepciones

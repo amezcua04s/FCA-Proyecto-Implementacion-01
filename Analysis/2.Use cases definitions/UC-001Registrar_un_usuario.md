@@ -2,7 +2,7 @@
  - UC - 001: Registrar un usuario
    
 ## Actores
- * Administrador del sistema
+ * Administrador
 
 ## Precondiciones
  * El administrador debe estar autenticado en el sistema
@@ -18,7 +18,7 @@
 - Nuevo usuario, desea tener credenciales para acceder al sistema y poder realizar las operaciones que su rol le permitan
 
 ## Breve descripción
-El admnistrados creará un nuevo usuario para que otro perfil pueda ingresar al sistema
+El admnistrador creará un nuevo usuario para que otro perfil pueda ingresar al sistema
 
 ---
 
