@@ -1,5 +1,5 @@
 # ID
- - UC - 004: Iniciar sesión
+ - UC - 005: Iniciar sesión
    
 ## Actores
  * Usuario interesado a utilizar el sistema
@@ -43,7 +43,7 @@ __S-1 En caso de que el usuario ingrese un correo que no respete el formato espe
 1. El sistema mostrará que el formato de correo es incorrecto
 2. El caso de uso continua en el paso 2
 ---
-__S_2 En caso de que el usuario ingrese un correo sin registrar en el sistema__
+__S-2 En caso de que el usuario ingrese un correo sin registrar en el sistema__
 1. El sistema mostrará que ese correo no está registrado en el sistema en forma de un modal
 1. El caso de uso continua en el paso 2
 ---
@@ -54,7 +54,7 @@ __S-3 En caso de que el usuario ingrese una contraseña incorrecta__
 __S-4 En caso de que el usuario haya solicitado un cambio de contraseña__
 1. El sistema le permitirá ingresar con las credenciales temporales
 2. El sistema redirigirá al usuario a una pantalla donde deberá escribir la nueva contraseña
-3. El sistema mostrará en forma de formulario la contraseña nueva y su confirmación
+3. El sistema solicitará en un formulario la contraseña nueva y su confirmación
         
         Correo:                 ejemplo@dominio.com
 
@@ -65,7 +65,7 @@ __S-4 En caso de que el usuario haya solicitado un cambio de contraseña__
    |||||||||Continuar|||||||||
    |-|-|-|-|-|:-:|:-:|:-:|-|-|-|:-:|-|-|-|-|-|
 
-   I. En caso de que el usuario no ingrese contraseñas que coincidan
+   I. En caso de que el usuario ingrese contraseñas que no coincidan
 
    II. El sistema indicará que no coinciden y que lo intente de nuevo
 

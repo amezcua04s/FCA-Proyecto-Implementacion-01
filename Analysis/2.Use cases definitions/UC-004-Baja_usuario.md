@@ -1,5 +1,5 @@
 # ID
- - UC - 003: Baja de un usuario
+ - UC - 004: Baja de un usuario
    
 ## Actores
  * Administrador
@@ -41,7 +41,7 @@ El administrador, en la página dode se encuentran todos los usuarios, seleccion
 
    |Cancelar|||||||||Continuar|
    |:-:|:-:|:-:|:-:|:-:|-|-|-|-|:--------:|
->> Tomar vista como referencia
+> Tomar vista como referencia
 ---
 4. El administrador seleccionará __"Continuar"__
 5. El sistema mostrará un recuadro avisando que el usuario no podrá reactivarse una vez se dé de baja

@@ -25,7 +25,7 @@ El administrador ingresará a la pantalla de __*Anticipos*__
 ## Flujo normal de eventos (Happy Path)
 1. El administrador ingresa a la vista de __*Anticipos*__
 2. El sistema muestra en forma de lista, del más reciente al más antiguo de los anticipos registrados
-3. Mostrará el *Cliente* (qué realizo el anticipo), *Proyecto* (al cuál pertenece el anticipo), *Monto*, *Fecha*, *Método* (Déposito o Transferencia), *Referencia* y *Estatus*
+3. Mostrará el *Cliente* (qué realizo el anticipo), *Proyecto* (al cuál pertenece el anticipo), *Monto*, *Fecha*, *Método* (Déposito o Transferencia), *Referencia* y *Estatus* en forma de tabla
 > Mostrar en listas de 10 en 10
 
 |Cliente|Proyecto|Monto|Fecha|Método|Referencia|Estatus|Acciones|

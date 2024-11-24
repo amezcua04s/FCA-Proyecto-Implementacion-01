@@ -45,7 +45,7 @@ El administrador ingresará al apartado de __*Clientes*__, donde seleccionará e
    |Regresar|||||||||Continuar|
    |:-:|:-:|:-:|:-:|:-:|-|-|-|-|-|
    
-   >*Tomar tabla como referencia***
+   >*Tomar vista como referencia***
 ---
 4. El administrador seleccionará __"Continuar"__
 5. El sistema mostrará un recuadro avisando que el cliente no podrá reactivarse una vez se dé de baja

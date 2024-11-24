@@ -1,5 +1,5 @@
 # ID
- - UC - 006: Registrar un proveedor 
+ - UC - 007: Registrar un proveedor 
  
 ## Actores
  * Administrador

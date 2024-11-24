@@ -25,7 +25,7 @@ El usuario ingresará a la pantalla de __*Proyectos*__
 ## Flujo normal de eventos (Happy Path)
 1. El administrador ingresa a la vista de __*Proyectos*__
 2. El sistema muestra en forma de lista, del más reciente al más antiguo de los proyectos registrados
-3. Mostrará el *Nombre*, *Fecha de inicio*, *Total*, *Concepto*, *Comentarios* y *Estatus*
+3. Mostrará el *Nombre*, *Fecha de inicio*, *Total*, *Concepto*, *Comentarios* y *Estatus* en forma de tabla
 > Mostrar en listas de 6 en 6
 
 |Nombre|Fecha de inicio|Total|Concepto|Comentarios|Estatus|Acciones|

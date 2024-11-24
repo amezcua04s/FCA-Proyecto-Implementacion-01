@@ -6,8 +6,8 @@
 
 ## Precondiciones
  * El administrador debe estar autenticado en el sistema
- * El proveedor al que se le desea asignar el pago debe existir en el sistema
- * El proyecto al que se le desea asignar el pago debe existir en el sistema
+ * El proveedor al que se le realizará el pago debe existir en el sistema
+ * El proyecto al que pertenece el pago debe existir en el sistema
 
 ## Postcondiciones
  * Un nuevo pago será registrado a un proyecto, y se le restará al total del adeudo
@@ -19,7 +19,7 @@
 - El administrador desea registrar un pago realizado a un proveedor por un proyecto
 
 ## Breve descripción
-El administrador registrará un nuevo pago que le permita llevar un control del total de un proyecto
+El administrador registrará un nuevo pago que le permita gestionar de forma puntual un proyecto
 
 ## Disparador
 El administrador ingresará al apartado de __*Pagos*__, donde seleccionará la opción de __"Registrar"__ 
@@ -29,17 +29,17 @@ El administrador ingresará al apartado de __*Pagos*__, donde seleccionará la o
 2. El administrador seleccionará el boton __"Registrar"__ 
 3. El sistema mostrará un formulario para el registro del nuevo pago, donde se solicitará;*Proveedor* (al que se le realizó el pago),*Proyecto* (al que pertenece el pago), *Monto del pago*, *Fecha del pago*, *Método* y *Referencia*
 
-         Proveedor   > Seleccione el proveeedor 
+         Proveedor     > Seleccione el proveeedor 
 
-         Proyecto    > Seleccione el proyecto
+         Proyecto      > Seleccione el proyecto
 
          Monto:        _______________
 
          Fecha:        > Seleccione la fecha
 
-         Correo:       _______________
+         Método:       > Seleccione método
 
-         Teléfono:     _______________
+         Referencia:   _______________
              
       |Regresar|||||||||Continuar|
       |:-:|:-:|:-:|:-:|:-:|-|-|-|-|:--------:|
@@ -49,6 +49,8 @@ El administrador ingresará al apartado de __*Pagos*__, donde seleccionará la o
 *Para el proyecto realizar un menú desplegable**
 
 *Para la fecha realizar un menú desplegable**
+
+*Para el método realizar un menú desplegable**
 
 >*Tomar vista como referencia**
 4. Una vez llenados los campos, él administrador selecciona el botón __"Continuar"__
@@ -66,7 +68,7 @@ __S-2 En caso de que el administrador ingresé información en un campo y no cum
 1. Solicitará que ingrese de nuevo los campos incorrectos
 1. El caso de uso continua en el paso 3
 ---
-__S-3 En caso de que el administrador deseé modificar algún campo del proveedor por registrar__
+__S-3 En caso de que el administrador deseé modificar algún campo del pago por registrar__
 1. El sistema mostrará nuevamente la pantalla de llenado de datos, con los datos ingresados previamente
 2. El administrador modificará los campos que deseé
 3. El administrador seleccionará el botón de __"Continuar"__

@@ -1,5 +1,5 @@
 # ID
- - UC - 005: Cerrar sesión
+ - UC - 006: Cerrar sesión
    
 ## Actores
  * Usuario/Administrador
@@ -25,7 +25,7 @@ El usuario/administrador selecciona la opción de "Logout" en la esquina superio
 ## Flujo normal de eventos (Happy Path)
 1. El usuario/administrador selecciona la opción de "Logout" en la esquina superior derecha
 2. El sistema finaliza la sesión y regresa a la página de inicio de sesión
-3. El caso de uso llama al "[UC-004Iniciar_sesion](./UC-004Iniciar_sesion.md)"
+3. El caso de uso llama al "[UC-004Iniciar_sesion](./UC-005-Iniciar_sesion.md)"
 4. El caso de uso termina
 
 ## Sub-flujos 

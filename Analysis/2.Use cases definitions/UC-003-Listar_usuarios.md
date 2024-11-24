@@ -25,7 +25,7 @@ El usuario ingresará a la pantalla de __*Usuarios*__
 ## Flujo normal de eventos (Happy Path)
 1. El usuario ingresa a la vista de __*Usuarios*__
 2. El sistema muestra en forma de lista, del más reciente al más antiguo los usuario registrados
-3. Mostrará el *Nombre*, *Apellidos*, *Correo*, *Rol* y *Estatus*
+3. Mostrará el *Nombre*, *Apellidos*, *Correo*, *Rol* y *Estatus* en forma de tabla
 > Mostrar en listas de 10 en 10
 
 |Nombre|Apellidos|Correo|Rol|Estatus|Acciones|

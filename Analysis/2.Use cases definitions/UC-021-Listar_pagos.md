@@ -25,7 +25,7 @@ El administrador ingresará a la pantalla de __*Pagos*__
 ## Flujo normal de eventos (Happy Path)
 1. El administrador ingresa a la vista de __*Pagos*__
 2. El sistema muestra en forma de lista, del más reciente al más antiguo de los pagos registrados
-3. Mostrará el *Proveedor* (al que se le realizó el pago), *Proyecto* (al que pertenece), *Monto*, *Fecha*, *Método* (Déposito o Transferencia), *Referencia* y *Estatus*
+3. Mostrará el *Proveedor* (al que se le realizó el pago), *Proyecto* (al que pertenece), *Monto*, *Fecha*, *Método* (Déposito o Transferencia), *Referencia* y *Estatus* en forma de tabla
 > Mostrar en listas de 10 en 10
 
 |Proveedor|Proyecto|Monto|Fecha|Método|Referencia|Estatus|Acciones|

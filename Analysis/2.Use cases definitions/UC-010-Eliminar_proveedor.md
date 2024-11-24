@@ -45,7 +45,7 @@ El administrador ingresará al apartado de __*Proveedores*__, donde seleccionar�
    |Cancelar|||||||||Continuar|
    |:-:|:-:|:-:|:-:|:-:|-|-|-|-|-|
    
-   >*Tomar tabla como referencia***
+   >*Tomar vista como referencia***
 ---
 4. El administrador seleccionará __"Continuar"__
 5. El sistema mostrará un recuadro avisando que el proveedor no podrá reactivarse una vez se dé de baja

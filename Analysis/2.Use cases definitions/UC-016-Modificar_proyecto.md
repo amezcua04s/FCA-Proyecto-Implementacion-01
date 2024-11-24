@@ -18,14 +18,14 @@
 - El administrador desea modificar la información del proyecto con el fin de tener un control más exacto de este
 
 ## Breve descripción
-El administrador modificara dato o datos de un proyecto previamente registrado, esto en caso de que sea necesario cambiar información y mantener mayor certeza de la información guardada
+El administrador modificara dato o datos de un proyecto previamente registrado, esto en caso de que sea necesario cambiar información y mantener mayor certeza de los datos almacenados
 
 ## Disparador
 El administrador ingresará al apartado de __*Proyectos*__, seleccionara el botón __"Editar"__ en el proyecto correspondiente
 
 ## Flujo normal de eventos (Happy Path)
 1. El administrador ingresará al apartado de __*Proyectos*__
-2. El administrador selecciona el botón __*Editar*__ del proyecto correspondiente
+2. El administrador selecciona el botón __"Editar"__ del proyecto correspondiente
 3. El sistema mostrará la información del proyecto, donde el administrador podrá sobreescribir la información existente
 
          Nombre:              Proyecto final Implementación

@@ -25,7 +25,7 @@ El administrador ingresará a la pantalla de __*Clientes*__
 ## Flujo normal de eventos (Happy Path)
 1. El administrador ingresa a la vista de __*Clientes*__
 2. El sistema muestra en forma de lista, del más reciente al más antiguo de los proveedores registrados
-3. Mostrará la *Razón*, *Tipo*, *RFC*, *Domicilio*, *Correo*, *Teléfono* y *Estatus*
+3. Mostrará la *Razón*, *Tipo*, *RFC*, *Domicilio*, *Correo*, *Teléfono* y *Estatus* en forma de tabla
 > Mostrar en listas de 6 en 6
 
 |Razón|Tipo|RFC|Domicilio|Correo|Telefono|Estatus|Acciones|

@@ -18,7 +18,7 @@
 - El administrador desea cancelar un proyecto
 
 ## Breve descripción
-El administrador cancelara a un proyecto en el sistema, no habrá posibilidad de cambiar a estado activo
+El administrador cancelara a un proyecto en el sistema, no habrá posibilidad de cambiar de estatus nuevamente
 
 ## Disparador
 El administrador ingresará al apartado de __*Proyectos*__, donde seleccionará el botón de __"Baja"__ en el proyecto correspondiente

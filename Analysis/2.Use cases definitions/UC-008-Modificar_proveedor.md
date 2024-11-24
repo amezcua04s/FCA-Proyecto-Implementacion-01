@@ -45,7 +45,7 @@ El administrador ingresará al apartado de __*Proveedores*__, seleccionara el bo
    |:-:|:-:|:-:|:-:|:-:|-|-|-|-|-|
       >*Para el tipo de persona realizar un menú desplegable**
    
-   >*Tomar tabla como referencia***
+   >*Tomar vista como referencia***
 ---
 4. El administrador sobrescribirá los datos que se deseen modificar
 5. El administrador selecciona el botón de __"Guardar"__
