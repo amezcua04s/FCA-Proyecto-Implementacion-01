@@ -1,32 +1,32 @@
 # ID
- - UC - 008: Modificar proveedor 
+ - UC - 012: Modificar un cliente 
  
 ## Actores
  * Administrador
 
 ## Precondiciones
  * El administrador debe estar autenticado en el sistema
- * El proveedor que desea modificar debe estar previamente registrado en el sistema
+ * El cliente a modificar debe estar previamente registrado en el sistema
 
 ## Postcondiciones
- * El proveedor a modificar tendrá datos diferentes a los que previamente tenía
+ * El proveedor a modificar tendrá datps diferentes a los que previamente tenía
    
 ## Tipo 
  * Secundario
 
 ## Partes interesadas e intereses:
-- El administrador desea modificar la información del proveedor para tener un control más exacto de este
+- El administrador desea modificar la información del cliente para tener un control más exacto de este
 
 ## Breve descripción
-El administrador modificara dato o datos de un proveedor previamente registrado, esto en caso de que sea necesario cambiar información del contacto y mantener mayor certeza de la información guardada
+El administrador modificará dato o datos de un proveedor peviamente registrado, esto en caso de que sea necesario cambiar información del contacto y mantener mayor certeza de la información guardada
 
 ## Disparador
-El administrador ingresará al apartado de __*Proveedores*__, seleccionara el botón __"Editar"__ en el proveedor correspondiente
+El administrador ingresará al apartado de __*Clientes*__, seleccionara el botón __"Editar"__ en el cliente correspondiente
 
 ## Flujo normal de eventos (Happy Path)
-1. El administrador ingresará al apartado de __*Proveedores*__
-1. El administrador selecciona el botón __"Editar"__ 
-3. El sistema mostrará la información del proveedor, donde el administrador podrá sobreescribir la información existente
+1. El administrador ingresará al apartado de __*Clientes*__
+1. El administrador selecciona el botón __"Editar"__ del cliente correspondiente
+2. El sistema mostrará la información del cliente, donde el administrador podrá sobreescribir la información existente
 
          Razón social:         Patito S.A. de C.V.
 
@@ -53,10 +53,9 @@ El administrador ingresará al apartado de __*Proveedores*__, seleccionara el bo
 8. El administrador confirma, el sistema guarda los cambios y muestra un mensaje del resultado de la operación
 9. El caso de uso termina
 
-
 ## Sub-flujos 
-__S-1 En caso de que el administrador ingrese un RFC con formato inválido__
-1. El sistema mostrará el error debajo del recuadro del RFC y solicitará que ingrese uno válido
+__S-1 En caso de que el administrador ingrese un campo con formato inválido__
+1. El sistema mostrará el error debajo del campo y solicitará que ingrese uno válido
 2. El caso de uso continua en el paso 3
 ---
 __S-2 En caso de que el administrador seleccione la opción "Modificar" a la hora de que el sistema pregunte si desea continuar__
@@ -64,7 +63,7 @@ __S-2 En caso de que el administrador seleccione la opción "Modificar" a la hor
 2. El caso de uso continua en el paso 3
 ---
 __S-3 En caso de que el administrador selecciona la opción "Cancelar" a la hora de que el sistema pregunte si desea continuar__
-1. El sistema regresará a la pantalla de __*Proveedores*__
+1. El sistema regresará a la pantalla de __*Clientes*__
 1. El caso de uso terminará
 
 ### Excepciones

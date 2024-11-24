@@ -18,7 +18,7 @@ esos pagos y anticipos.
 1. Total
 1. Concepto (A que se refiere con concepto)
 1. Comentarios adicionales (De parte del stacke holder?, o de los desarrolladores)
-
+---
 * __Clientes__
 1. Razón social
 1. Persona Física o Moral
@@ -26,7 +26,7 @@ esos pagos y anticipos.
 1. Domicilio Fiscal
 1. Email
 1. Teléfono
-
+---
 * __Proveedores__
 1. Razón social
 1. Persona Física o Moral
@@ -34,23 +34,23 @@ esos pagos y anticipos.
 1. Domicilio
 1. Email
 1. Teléfono
-
+---
 * __Anticipos__
 1. __Cliente__ quién realizo el anticipo
-1. Proyecto al que pertenece el anticipo
+1. __Proyecto__ al que pertenece el anticipo
 1. Monto del anticipo
 1. Fecha del anticipo
 1. Método (Déposito o Transferencia)
 1. Referencia
-
+---
 * __Pagos__
 1. __Proveedor__ al que se le realizó el pago
-1. Proyecto al que pertenece el pago
+1. __Proyecto__ al que pertenece el pago
 1. Monto del pago
 1. Fecha del pago
 1. Método (Déposito o Transferencia)
 1. Referencia
-
+---
 * __Usuarios__
 1. Nombre del usuario
 1. Rol (Administrador o Usuario sin privilegios)

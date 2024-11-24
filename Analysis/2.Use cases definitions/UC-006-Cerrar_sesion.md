@@ -28,6 +28,6 @@ El usuario/administrador selecciona la opción de "Logout" en la esquina superio
 3. El caso de uso llama al "[UC-004Iniciar_sesion](./UC-004Iniciar_sesion.md)"
 4. El caso de uso termina
 
-## Sub-flujo 
+## Sub-flujos 
 
 ### Excepciones

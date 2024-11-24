@@ -6,6 +6,7 @@
 
 ## Precondiciones
  * El administrador debe estar autenticado en el sistema
+ * El correo eléctronico a registrar no debe estar previamente registrado como usuario activo
 
 ## Postcondiciones
  * Un nuevo usuario estará registrado con las credenciales correspondientes
@@ -14,24 +15,22 @@
  * Primario
 
 ## Partes interesadas e intereses:
-- El administrador desea registrar un nuevo usuario con la posibilidad de asignarle permisos o dejarlo como usuario 'default'
-- Nuevo usuario, desea tener credenciales para acceder al sistema y poder realizar las operaciones que su rol le permitan
+- El administrador desea registrar un nuevo usuario 
+- Nuevo usuario, desea tener credenciales para acceder al sistema 
 
 ## Breve descripción
-El admnistrador creará un nuevo usuario para que otro perfil pueda ingresar al sistema
+El admnistrador creará un nuevo usuario con la posibilidad de asignarle permisos de administrador o dejarlo como usuario 'default'
 
 ---
 
 ## Disparador
-- El administrador una vez autenticado, ingresará al apartado de Usuarios, donde seleccionará la opción de "Registrar"
+El administrador ingresará al apartado de __*Usuarios*__, donde seleccionará la opción de __"Registrar"__
 
 ## Flujo normal de eventos (Happy Path)
-
-1. El administrador seleccionará la opción "Registrar" dentro del apartado de usuarios
+1. El administrador ingresará al apartado de __*Usuarios*__
+1. El administrador seleccionará el botón __"Registrar"__ dentro del apartado de usuarios
 2. El sistema lo redirigirá a una nueva pantalla
-3. El sistema solicitará la siguiente información del nuevo usuario
-
-nombre, apellidos, correo electrónico, usuario y contraseña.
+3. El sistema solicitará la siguiente información del nuevo usuario; *Nombre*, *Apellidos*, *Correo eléctronico*, *Tipo de usuario* y *contraseña*
 
         Nombre:                 _______________
 
