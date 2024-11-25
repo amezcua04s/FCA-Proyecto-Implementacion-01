@@ -31,18 +31,19 @@ El administrador ingresará al apartado de __*Pagos*__, donde seleccionará la o
 4. El administrador seleccionará la opción __"Agregar"__ del proyecto deseado
 3. El sistema mostrará un formulario para el registro del nuevo pago, donde se solicitará;*Proveedor* (al que se le realizó el pago),*Proyecto* (al que pertenece el pago), *Monto del pago*, *Fecha del pago*, *Método* y *Referencia*
 
-         Proveedor     > Seleccione el proveeedor 
+         Proveedor                  > Seleccione el proveeedor 
 
-         Proyecto      > Seleccione el proyecto
+         Proyecto                   > Seleccione el proyecto
 
-         Monto:        _______________
+         Monto pagado:              _______________
 
-         Fecha:        > Seleccione la fecha
+         Precio del proyecto:       _______________
+         Fecha:                     > Seleccione la fecha
 
-         Método:       > Seleccione método
+         Método:                    > Seleccione método
 
-         Referencia:   _______________
-             
+         Referencia:                _______________
+         
       |Regresar|||||||||Continuar|
       |:-:|:-:|:-:|:-:|:-:|-|-|-|-|:--------:|
 

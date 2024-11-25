@@ -43,7 +43,7 @@ El administrador ingresará al apartado de __*Anticipos*__, donde seleccionará 
 
          Método:              > Seleccione método
 
-         Referencia:   _______________
+         Referencia:          _______________
              
       |Regresar|||||||||Continuar|
       |:-:|:-:|:-:|:-:|:-:|-|-|-|-|:--------:|
