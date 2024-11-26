@@ -1,4 +1,4 @@
-# Requisitos del aplicativo ...
+# Requisitos del aplicativo SAGOP
 - Como administrador quiero __ingresar al sistema por medio de usuario y contraseña__, para
 poder agregar, eliminar, actualizar y listar los pagos que obtiene y que realiza una empresa
 de desarrollo de software.
