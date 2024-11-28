@@ -24,6 +24,11 @@ class User extends Authenticatable
     ];
 
     /**
+     * El atributo esta protegido por el modelo, es decir, la tabla esta protegida
+     */
+    protected $table = 'users';
+
+    /**
      * The attributes that should be hidden for serialization.
      *
      * @var array<int, string>
