@@ -1,7 +1,12 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+
+use App\Http\Middleware\AdminAuthenticate;
+
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ClienteController;
+use App\Http\Controllers\ProyectoController;
 
 Route::get('/', function () {
     return view('welcome');
@@ -9,14 +14,21 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])
+    ->name('home');
+//->middleware(AdminAuthenticate::class)
 //Route::resource('/usuarios', UserController::class);
-Route::resource('/perfil', UserController::class);
+Route::resource('usuarios', UserController::class)
+    ->middleware(AdminAuthenticate::class);
 
-Route::get('/usuarios', [UserController::class, 'index']);
 
-Route::get('/create', function () {
-    return view('dashboard.user.create');
-});
+Route::resource('clientes', ClienteController::class)
+    ->middleware(ClienteController::class);
+
+    
+Route::resource('proyectos', ProyectoController::class)
+->middleware(ProyectoController::class);
+
+
+
 

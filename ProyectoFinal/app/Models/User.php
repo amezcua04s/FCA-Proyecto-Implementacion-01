@@ -3,24 +3,20 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
-    use HasFactory, Notifiable;
+    use Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name', 'email', 'password', 'admin',
     ];
 
     /**
@@ -37,6 +33,12 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function isAdmin()
+    {
+        // Assuming you have an 'is_admin' column in your users table
+        return $this->admin;
+    }
 
     /**
      * Get the attributes that should be cast.

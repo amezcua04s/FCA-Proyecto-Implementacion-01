@@ -3,7 +3,8 @@
 @section('content')
 
 <form method="POST" action="{{route('user.store')}}">
-
-  @include('partials._form')
+  @csrf
+  @include('partials._formUser')
+</form>
 
 @endsection

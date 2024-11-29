@@ -5,7 +5,20 @@
  */
 
 import './bootstrap';
+import ExampleComponent from './components/ExampleComponent.vue';
+
 import { createApp } from 'vue';
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Esto asegura que Vue se monte solo después de que el DOM esté listo
+    const app = createApp({});
+
+    // Registrar tu componente global
+    app.component('example-component', ExampleComponent);
+
+    // Montar la aplicación Vue en el contenedor con id="app"
+    app.mount('#app');
+});
 
 /**
  * Next, we will create a fresh Vue application instance. You may then begin
@@ -13,10 +26,10 @@ import { createApp } from 'vue';
  * to use in your application's views. An example is included for you.
  */
 
-const app = createApp({});
+//const app = createApp({});
 
-import ExampleComponent from './components/ExampleComponent.vue';
-app.component('example-component', ExampleComponent);
+//import ExampleComponent from './components/ExampleComponent.vue';
+//app.component('example-component', ExampleComponent);
 
 /**
  * The following block of code may be used to automatically register your
@@ -36,7 +49,4 @@ app.component('example-component', ExampleComponent);
  * scaffolding. Otherwise, you will need to add an element yourself.
  */
 
-app.mount('#app');
-
-import '../css/app.css';
-
+//app.mount('#app');

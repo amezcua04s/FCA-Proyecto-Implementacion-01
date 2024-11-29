@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
 use Illuminate\Http\Request;
 use App\Models\User;
 
@@ -17,7 +18,7 @@ class UserController extends Controller
     public function index()
     {
         //
-        $users = User::select('users.*')->get();
+        $users = User::paginate(10);
         return view('dashboard.user.index', compact('users'));
     }
 
@@ -28,8 +29,7 @@ class UserController extends Controller
     {
         //
         $user = new User();
-        $roles = Role::get();
-        return view('dashboard.users.create', compact('user', 'roles'));
+        return view('dashboard.usuarios.create', compact('user'));
     }
 
     /**
@@ -37,11 +37,10 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
-        $user = $request->validated();
-        
-        User::create($user);
-        return back()->with('status', 'Guardado');
+        $data = $request->validated();
+        $data['password'] = bcrypt($data['password']);
+        User::create($data);
+        return redirect()->route('usuarios.index')->with('status', 'Usuario creado con éxito');
     }
 
     /**
@@ -58,14 +57,30 @@ class UserController extends Controller
     public function edit(string $id)
     {
         //
+        $user = User::findOrFail($id);
+    
+        return view('dashboard.user.edit', compact('user'));
     }
 
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, string $id)
+    public function update(StoreUserRequest $request, $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $data = $request->validated();
+
+        // Si la contraseña no está vacía, encripta y actualiza
+        if (!empty($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            unset($data['password']);
+        }
+
+        // Actualiza el usuario con los datos validados
+        $user->update($data);
+
+        return redirect()->route('usuarios.index')->with('status', 'Usuario actualizado con éxito');
     }
 
     /**
@@ -73,6 +88,8 @@ class UserController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        $user->delete();
+        return redirect()->route('usuarios.index')->with('status', 'Usuario eliminado con éxito');
     }
 }

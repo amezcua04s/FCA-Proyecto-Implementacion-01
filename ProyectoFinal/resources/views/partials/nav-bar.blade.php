@@ -7,13 +7,13 @@
       <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-                <a class="nav-link" href="{{ route('usario.index') }}">Usuarios</a>
+                <a class="nav-link" href="{{ route('usuarios.index') }}">Usuarios</a>
               </li>
           <li class="nav-item">
-            <a class="nav-link active" href="{{ route('cliente.index')}}">Clientes</a>
+            <a class="nav-link active" href="{{ route('clientes.index')}}">Clientes</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link active" href="{{ route('proyecto.index')}}">Proyectos</a>
+            <a class="nav-link active" href="{{ route('proyectos.index')}}">Proyectos</a>
           </li>
           <li class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">

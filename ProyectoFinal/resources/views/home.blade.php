@@ -15,9 +15,16 @@
                     @endif
 
                     {{ __('You are logged in!') }}
+                    <div>
+                        <button href="/">Página principal</button>
+                    </div>
                 </div>
             </div>
         </div>
     </div>
+    <div>
+        @include('partials.footer')    
+        </div>
 </div>
+
 @endsection
