@@ -26,6 +26,34 @@
                         </div>
 
                         <div class="row mb-3">
+                            <label for="paterno" class="col-md-4 col-form-label text-md-end">{{ __('Paterno') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="paterno" type="text" class="form-control @error('paterno') is-invalid @enderror" name="paterno" value="{{ old('paterno') }}" required autocomplete="paterno">
+
+                                @error('paterno')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
+                            <label for="materno" class="col-md-4 col-form-label text-md-end">{{ __('Materno') }}</label>
+
+                            <div class="col-md-6">
+                                <input id="materno" type="text" class="form-control @error('materno') is-invalid @enderror" name="materno" value="{{ old('materno') }}" required autocomplete="materno">
+
+                                @error('materno')
+                                    <span class="invalid-feedback" role="alert">
+                                        <strong>{{ $message }}</strong>
+                                    </span>
+                                @enderror
+                            </div>
+                        </div>
+
+                        <div class="row mb-3">
                             <label for="email" class="col-md-4 col-form-label text-md-end">{{ __('Email Address') }}</label>
 
                             <div class="col-md-6">

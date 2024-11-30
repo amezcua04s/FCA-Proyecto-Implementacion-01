@@ -13,7 +13,14 @@ return new class extends Migration
     {
         Schema::create('cliente', function (Blueprint $table) {
             $table->id();
-            $table->string('nombre');
+            $table->string('razon');
+            $table->enum('persona', ['Física', 'Moral'])->default('Física');
+            $table->string('rfc', 13);
+            $table->string('domicilio');
+            $table->string('email')->unique();
+            $table->string('telefono', 10);
+            $table->boolean('activo')->default(true);
+
             $table->timestamps();
         });
     }

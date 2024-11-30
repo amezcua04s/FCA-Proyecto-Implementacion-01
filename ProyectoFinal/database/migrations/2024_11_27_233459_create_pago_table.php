@@ -13,8 +13,17 @@ return new class extends Migration
     {
         Schema::create('pago', function (Blueprint $table) {
             $table->id();
-            $table->string('concepto');
+            $table->unsignedBigInteger('proyecto');
+            $table->unsignedBigInteger('proveedor');
+            $table->decimal('monto', 10, 2);
+            $table->date('fecha');
+            $table->enum('metodo', ['Efectivo', 'Transferencia', 'Cheque'])->default('Transferencia');
+            $table->string('referencia', 50)->default('anticipo');
+            $table->boolean('activo')->default(true);
             $table->timestamps();
+
+            $table->foreign('proyecto')->references('id')->on('proyecto');
+            $table->foreign('proveedor')->references('id')->on('proveedor');
         });
     }
 

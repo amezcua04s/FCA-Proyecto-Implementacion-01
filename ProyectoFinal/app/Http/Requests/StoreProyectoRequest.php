@@ -4,14 +4,14 @@ namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
 
-class Proyecto extends FormRequest
+class StoreProyectoRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
      */
     public function authorize(): bool
     {
-        return false;
+        return true; // Permitir que la solicitud sea autorizada
     }
 
     /**
@@ -22,7 +22,27 @@ class Proyecto extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'nombre' => 'required|string|max:255',
+            'activo' => 'boolean',
+            'fecha_inicio' => 'required|date',
+            'fecha_fin' => 'required|date|after_or_equal:fecha_inicio',
+            'subtotal' => 'required|numeric|min:0',
+            'iva' => 'required|numeric|min:0',
+            'total' => 'required|numeric|min:0',
+            'concepto' => 'nullable|string|max:1000',
+            'comentarios' => 'nullable|string|max:1000',
+        ];
+    }
+
+    /**
+     * Get custom messages for validator errors.
+     *
+     * @return array<string, string>
+     */
+    public function messages(): array
+    {
+        return [
+            //TO DO
         ];
     }
 }

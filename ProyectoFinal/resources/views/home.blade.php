@@ -16,7 +16,7 @@
 
                     {{ __('You are logged in!') }}
                     <div>
-                        <button href="/">Página principal</button>
+                        <a href="{{ url('/') }}" class="btn btn-primary">Página principal</a>
                     </div>
                 </div>
             </div>

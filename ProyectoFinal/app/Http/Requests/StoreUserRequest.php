@@ -39,15 +39,7 @@ class StoreUserRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'name.required' => 'Se esperaba algún valor en el campo NOMBRE',
-            'name.max' => 'El máximo de caracteres es 50',
-            'email.required' => 'Debe inresar un email',
-            'email.email' => 'Debe respetar el formato esperado de email',
-            'email.max' => 'El máximo de caracteres es de 100',
-            'email.unique' => 'El email ya esta registrado con un usuario diferente al que esta siendo editado, ingrese un email diferente',
-            'password' => 'no',
-            'admin' => 'boolean',
-            
+        //TO DO
         ];
     }
 }
