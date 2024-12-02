@@ -37,11 +37,15 @@ class ProveedorController extends Controller
     {
         $data = $request->validated();
         Proveedor::create($data);
-        if($errors->any()){
-            return redirect()->route('proveedores.create')->withErrors($errors);
-        } else{
+
             return redirect()->route('proveedores.index')->with('status', 'Proveedor creado con éxito');
-        }
+        
+    }
+
+    public function show(string $id)
+    {
+        $proveedor = Proveedor::findOrFail($id);
+        return view('dashboard.proveedor.show', compact('proveedor'));
     }
 
     /**
@@ -70,7 +74,11 @@ class ProveedorController extends Controller
     public function destroy($id)
     {
         $proveedor = Proveedor::findOrFail($id);
+
+        $proveedor->pagos()->update(['proveedor' => null]);
+
         $proveedor->delete();
+
         return redirect()->route('proveedores.index')->with('status', 'Proveedor eliminado con éxito');
     }
 }

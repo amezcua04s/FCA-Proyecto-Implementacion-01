@@ -14,4 +14,11 @@ class Cliente extends Model
     protected $fillable = [
         'razon', 'persona', 'rfc', 'domicilio', 'email', 'telefono', 'activo',
     ];
+
+    public function anticipos()
+    {
+        return $this->hasMany(Anticipo::class, 'cliente');
+    }
+
+
 }

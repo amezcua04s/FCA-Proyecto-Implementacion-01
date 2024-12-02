@@ -15,11 +15,16 @@ return new class extends Migration
             $table->id();
             $table->string('nombre');
             $table->boolean('activo')->default(true);
-            $table->date('fecha_inicio');
-            $table->date('fecha_fin');
+            $table->date('inicio');
+            $table->date('fin');
             $table->decimal('subtotal', 10, 2);
             $table->decimal('iva', 10, 2);
             $table->decimal('total', 10, 2);
+
+            $table->decimal('pagado', 10, 2);
+            $table->decimal('anticipado', 10, 2);
+
+
 
             $table->string('concepto', 255);
             $table->string('comentarios', 500);

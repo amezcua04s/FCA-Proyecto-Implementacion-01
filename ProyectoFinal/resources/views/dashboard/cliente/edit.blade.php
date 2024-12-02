@@ -5,7 +5,7 @@
 <form method="POST" action="{{ route('clientes.update', $persona->id) }}" autocomplete="off">
     @csrf
     @method('PATCH')
-    @include('partials._formPersona')
+    @include('partials._formCliente')
 </form>
 
 @endsection

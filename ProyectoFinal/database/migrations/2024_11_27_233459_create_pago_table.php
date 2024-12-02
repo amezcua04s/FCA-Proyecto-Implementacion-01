@@ -17,13 +17,12 @@ return new class extends Migration
             $table->unsignedBigInteger('proveedor');
             $table->decimal('monto', 10, 2);
             $table->date('fecha');
-            $table->enum('metodo', ['Efectivo', 'Transferencia', 'Cheque'])->default('Transferencia');
+            $table->enum('metodo', ['Deposito', 'Transferencia'])->default('Transferencia');
             $table->string('referencia', 50)->default('anticipo');
-            $table->boolean('activo')->default(true);
             $table->timestamps();
 
-            $table->foreign('proyecto')->references('id')->on('proyecto');
-            $table->foreign('proveedor')->references('id')->on('proveedor');
+            $table->foreign('proyecto')->references('id')->on('proyecto')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('proveedor')->references('id')->on('proveedor')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

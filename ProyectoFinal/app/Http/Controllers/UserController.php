@@ -10,8 +10,25 @@ class UserController extends Controller
 {
 
     public function __construct() {
+
         $this->middleware('auth');
+
     }
+
+    public function continuar()
+    {
+        $user = auth()->user(); // Obtener el usuario autenticado
+
+        // Verificar el valor de restablecer
+        if ($user->restablecer == 1) {
+            // Si restablecer es 1, redirigir a la pantalla de cambio de contraseña
+            return view('dahboard.user.password', compact('user'));
+        } else {
+            // Si restablecer no es 1, redirigir a otra pantalla
+            return view('welcome');
+        }
+    }
+
     /**
      * Display a listing of the resource.
      */
@@ -29,18 +46,40 @@ class UserController extends Controller
     {
         //
         $user = new User();
-        return view('dashboard.usuarios.create', compact('user'));
+        return view('dashboard.user.create', compact('user'));
     }
 
     /**
      * Store a newly created resource in storage.
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        $data = $request->validated();
-        $data['password'] = bcrypt($data['password']);
-        User::create($data);
-        return redirect()->route('usuarios.index')->with('status', 'Usuario creado con éxito');
+        $validatedData = $request->validate([
+            'name' => 'required|string|max:255',
+            'paterno' => 'required|string|max:255',
+            'materno' => 'required|string|max:255',
+            'email' => 'required|email|max:255|unique:users,email',
+            'password' => 'nullable|string|min:8|confirmed',
+            'admin' => 'required|boolean',
+        ]);
+    
+        // Crear o actualizar el usuario
+        $user = new User(); // O si estás actualizando un usuario: $user = User::find($id);
+    
+        $user->name = $validatedData['name'];
+        $user->paterno = $validatedData['paterno'];
+        $user->materno = $validatedData['materno'];
+        $user->email = $validatedData['email'];
+        $user->admin = $validatedData['admin'];
+    
+        if ($request->filled('password')) {
+            $user->restablecer = true; // El usuario debe restablecer la contraseña
+            $user->password = bcrypt($validatedData['password']); // Encriptar la contraseña
+        }
+    
+        $user->save();
+    
+        return redirect()->route('usuarios.index')->with('success', 'Usuario creado correctamente');
     }
 
     /**
@@ -48,7 +87,18 @@ class UserController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $user = User::findOrFail($id);
+        return view('dashboard.user.show', compact('user'));
+    }
+
+    /**
+     * Muestra el perfil del usuario, autenticado
+     * Permite el cambio de la contraseña
+     */
+    public function profile(string $id)
+    {
+        $user = User::findOrFail($id);
+        return view('dashboard.user.profile', compact('user'));
     }
 
     /**
@@ -65,9 +115,19 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreUserRequest $request, $id)
+    public function update(StoreUserRequest $request, $id, $option)
     {
         $user = User::findOrFail($id);
+
+        $request->validate([
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+        $user->password = bcrypt($request->password);
+        $user->restablecer = false;
+        $user->save();
+        return redirect()->route('usuarios.index')->with('status', 'Contraseña actualizada con éxito');
+        
+        
         $data = $request->validated();
 
         // Si la contraseña no está vacía, encripta y actualiza
@@ -81,6 +141,7 @@ class UserController extends Controller
         $user->update($data);
 
         return redirect()->route('usuarios.index')->with('status', 'Usuario actualizado con éxito');
+        
     }
 
     /**

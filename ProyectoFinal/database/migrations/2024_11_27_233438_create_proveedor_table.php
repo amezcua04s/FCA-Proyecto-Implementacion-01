@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('domicilio');
             $table->string('email')->unique();
             $table->string('telefono', 10);
-            $table->boolean('activo')->default(true);
 
             $table->timestamps();
         });

@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Proyecto;
 
 class StorePagoRequest extends FormRequest
 {
@@ -29,6 +30,24 @@ class StorePagoRequest extends FormRequest
             'metodo' => 'required|string|max:255',
             'referencia' => 'required|string|max:255',
             'activo' => 'boolean',
+        ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $proyecto = Proyecto::find($this->input('proyecto'));
+        $monto = $this->input('monto');
+        $porPagar = $proyecto->total - $proyecto->pagado - $monto;
+
+        if ($porPagar < 0) {
+            $this->merge(['porPagar' => $porPagar]);
+        }
+    }
+
+    public function messages()
+    {
+        return [
+            //TO DO
         ];
     }
 }

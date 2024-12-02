@@ -29,7 +29,9 @@ class StoreProyectoRequest extends FormRequest
             'subtotal' => 'required|numeric|min:0',
             'iva' => 'required|numeric|min:0',
             'total' => 'required|numeric|min:0',
-            'concepto' => 'nullable|string|max:1000',
+            'pagado' => 'required|numeric|min:0',
+            'anticipado' => 'required|numeric|min:0',
+            'concepto' => 'nullable|string|max:20',
             'comentarios' => 'nullable|string|max:1000',
         ];
     }

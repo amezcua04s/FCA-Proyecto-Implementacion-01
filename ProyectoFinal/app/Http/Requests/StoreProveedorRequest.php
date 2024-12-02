@@ -13,12 +13,12 @@ class StoreProveedorRequest extends FormRequest
     public function rules()
     {
         return [
-            'razon' => 'required|string|max:255|unique:proveedor,razon,' . $this->route('proveedor'),
+            'razon' => 'required|string|max:255|unique:proveedor,razon,' ,
             'persona' => 'required|in:Física,Moral',
             'rfc' => 'required|string|max:13',
             'domicilio' => 'required|string|max:255',
-            'email' => 'required|string|email|max:255|unique:proveedor,email,' . $this->route('proveedor'),
-            'telefono' => 'nullable|string|max:10|unique:proveedor,telefono,' . $this->route('proveedor'),
+            'email' => 'required|string|email|max:255|unique:proveedor,email,' ,
+            'telefono' => 'nullable|string|max:10|unique:proveedor,telefono,',
         ];
     }
 

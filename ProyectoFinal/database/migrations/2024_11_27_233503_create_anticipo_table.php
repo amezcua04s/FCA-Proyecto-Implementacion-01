@@ -13,19 +13,17 @@ return new class extends Migration
     {
         Schema::create('anticipo', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('proyecto');
-            $table->unsignedBigInteger('cliente');
+            $table->unsignedBigInteger('proyecto')->nullable();
+            $table->unsignedBigInteger('cliente')->nullable();
             $table->decimal('monto', 10, 2);
             $table->date('fecha');
-            $table->enum('metodo', ['Efectivo', 'Transferencia', 'Cheque'])->default('Transferencia');
+            $table->enum('metodo',['Deposito', 'Transferencia'])->default('Transferencia');
             $table->string('referencia', 50)->default('pago');
            
-            $table->boolean('activo')->default(true);
-
             $table->timestamps();
 
-           $table->foreign('proyecto')->references('id')->on('proyecto');
-            $table->foreign('cliente')->references('id')->on('cliente');
+           $table->foreign('proyecto')->references('id')->on('proyecto')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('cliente')->references('id')->on('cliente')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

@@ -14,12 +14,18 @@ class AdminAuthenticate
      *
      * @param  \Closure(\Illuminate\Http\Request): (\Symfony\Component\HttpFoundation\Response)  $next
      */
-    public function handle(Request $request, Closure $next) {   
+    public function handle(Request $request, Closure $next): Response{   
+
         if (Auth::check() && Auth::user()->admin) {
             return $next($request);
         }
+                
+            
+        if (Auth::check()) {
+            return $next($request);
+        }    
 
-        return redirect('/home');
+        return redirect('/')->with('error', 'No tienes permisos para acceder a esta página');
 
     }
 }

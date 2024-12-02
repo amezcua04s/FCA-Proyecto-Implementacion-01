@@ -21,13 +21,12 @@ class PagoController extends Controller
      */
     public function index()
     {
-        /**
-           * $pagos = Pago::join('proyecto', 'pago.proyecto', '=', 'proyecto.id')
-           * ->join('proveedor', 'pago.proveedor', '=', 'proveedor.id')
-           * ->select('pago.*', 'proyecto.nombre as proyecto', 'proveedor.razon as proveedor')
-           * ->paginate(10);
-        */
-        $pagos = Pago::with(['proyecto', 'proveedor'])->paginate(10);
+        
+        $pagos = Pago::join('proyecto', 'pago.proyecto', '=', 'proyecto.id')
+            ->join('proveedor', 'pago.proveedor', '=', 'proveedor.id')
+            ->select('pago.*', 'proyecto.nombre as proyectoNombre', 'proveedor.razon as proveedorRazon')
+            ->paginate(10);
+       
     
         return view('dashboard.pago.index', compact('pagos'));
     }
@@ -51,13 +50,29 @@ class PagoController extends Controller
      */
     public function store(StorePagoRequest $request)
     {
-        $data = $request->validated();
-        Pago::create($data);
-        if($errors->any()){
-            return redirect()->route('proveedores.create')->withErrors($errors);
-        } else{
-            return redirect()->route('proveedores.index')->with('status', 'Proveedor creado con éxito');
+        $proyecto = Proyecto::find($request->input('proyecto'));
+        $monto = $request->input('monto');
+        $porPagar = $proyecto->total - $proyecto->pagado - $monto;
+
+        if ($porPagar < 0) {
+            return redirect()->back()->withErrors(['monto' => 'El monto del nuevo pago no puede ser mayor que el valor por pagar.']);
         }
+
+        // Crear un nuevo pago
+        $pago = new Pago();
+        $pago->proyecto = $request->input('proyecto');
+        $pago->proveedor = $request->input('proveedor');
+        $pago->monto = $monto;
+        $pago->fecha = $request->input('fecha');
+        $pago->metodo = $request->input('metodo');
+        $pago->referencia = $request->input('referencia');
+        $pago->save();
+
+        // Actualizar el valor de pagado en el proyecto
+        $proyecto->pagado += $monto;
+        $proyecto->save();
+
+        return redirect()->route('pagos.index')->with('success', 'Pago registrado y actualizado correctamente.');
     }
 
     /**
@@ -66,8 +81,11 @@ class PagoController extends Controller
     public function show($id)
     {
         $pago       = Pago::with(['proyecto', 'proveedor'])->findOrFail($id);
+        $proyecto   = Proyecto::find($pago->proyecto);
+        $proveedor  = Proveedor::find($pago->proveedor);
+
      
-        return view('dashboard.pago.show', compact('pago'));
+        return view('dashboard.pago.show', compact('pago', 'proyecto', 'proveedor'));
     }
 
     /**
@@ -100,7 +118,14 @@ class PagoController extends Controller
     public function destroy(string $id)
     {
         $pago = Pago::findOrFail($id);
+    
+        $proyecto = Proyecto::findOrFail($pago->proyecto);
+    
+        $proyecto->pagado -= $pago->monto;
+        $proyecto->save(); 
+    
         $pago->delete();
+    
         return redirect()->route('pagos.index')->with('status', 'Pago eliminado con éxito');
     }
 }

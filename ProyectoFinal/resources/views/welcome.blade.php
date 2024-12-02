@@ -15,8 +15,8 @@
     <!-- Styles -->
     <style>
         html, body {
-            background-color: #4c4747;
-            color: #adbec6;
+            background-color: #ffffff;
+            color: #000001;
             font-family: 'Nunito', sans-serif;
             font-weight: 200;
             height: 100vh;
@@ -49,10 +49,12 @@
 
         .title {
             font-size: 84px;
+            color: #343a40; /* Color más tenue y oscuro */
+            font-family: 'Arial', sans-serif; /* Fuente diferente */
         }
 
         .links > a {
-            color: #636b6f;
+            color: #ffffff;
             padding: 0 25px;
             font-size: 13px;
             font-weight: 600;
@@ -73,14 +75,14 @@
             padding: 1rem;
             background-color: #fff;
             border-radius: 0.5rem;
-            box-shadow: 0px 14px 34px 0px rgba(0, 0, 0, 0.08);
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); /* Sombra */
             transition: all 0.3s ease;
         }
 
         .nav-link:hover {
             text-decoration: none;
-            color: #000;
-            box-shadow: 0px 14px 34px 0px rgba(0, 0, 0, 0.2);
+            color: #007bff;
+            box-shadow: 0px 14px 34px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el ratón */
         }
 
         .nav-link img {
@@ -92,100 +94,110 @@
         .nav-link h2 {
             font-size: 1.5rem;
             font-weight: 600;
-            color: #000;
+            color: #343a40; /* Color más tenue y oscuro */
+        }
+
+        .nav-link i {
+            font-size: 2rem;
+            color: #007bff;
         }
     </style>
 </head>
 <body>
-    <div class="flex-center position-ref">
+    <div class="container flex-center position-ref full-height">
         @if (Route::has('login'))
             <div class="top-right links">
                 @auth
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li class="nav-item">
-                            <a class="dropdown-item" href="{{ route('logout') }}" onclick="event.preventDefault();
-                                document.getElementById('logout-form').submit();">
-                                Salir
-                            </a>
-                        </li>
+                    <div class="dropdown mt-1">
+                        <button class="btn btn-secondary dropdown-toggle" type="button" id="dropdownMenuButton" data-bs-toggle="dropdown" aria-expanded="false">
+                            {{ Auth::user()->name }}
+                        </button>
+                        <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                            <li>
+                                <a class="dropdown-item" href="{{ route('usuarios.show', Auth::user()->id) }}">
+                                    Perfil
+                                </a>
+                            </li>
+                            <li>
+                                <a class="dropdown-item" href="{{ route('logout') }}"
+                                   onclick="event.preventDefault();
+                                             document.getElementById('logout-form').submit();">
+                                    Salir
+                                </a>
+                                <form id="logout-form" action="{{ route('logout') }}" method="POST" class="d-none">
+                                    @csrf
+                                </form>
+                            </li>
+                        </ul>
                     </div>
                 @else
-                    <a href="{{ route('login') }}">Login</a>
-
-                    @if (Route::has('register'))
-                        <a href="{{ route('register') }}">Register</a>
-                    @endif
+                    <a href="{{ route('login') }}" class="btn btn-primary">Login</a>
                 @endauth
             </div>
         @endif
-      
 
-        <div class="content flex-full">
+        <div class="content">
             <div class="title m-b-md">
-                Laravel
-                <font-awesome-icon icon="fa-solid fa-phone-volume" />
+                SAGOP
             </div>
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 mb-4">
-                        <div class="nav-link">
-                            <a href="{{ route('usuarios.index') }}">
-                                <i class="fas fa-users"></i>
-                                <img src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="Usuarios">
-                                <h2>Usuarios</h2>
-                            </a>
+                <div class="container">
+                    <div class="row">
+                        <div class="col-12 col-md-6 mb-4">
+                            <div class="nav-link">
+                                <a href="{{ route('usuarios.index') }}">
+                                    <img src="https://cdn-icons-png.flaticon.com/512/17/17004.png" alt="Usuarios">
+                                    <h2>Usuarios</h2>
+                                 </a>
+                             </div>
+                         </div>
+                        <div class="col-12 col-md-6 mb-4">
+                            <div class="nav-link">
+                                <a href="{{ route('proveedores.index') }}">
+                                    <img src="https://media.istockphoto.com/id/1180028723/vector/phone-with-waves-symbol-icon-black-simple-isolated-vector-stock-illustration.jpg?s=612x612&w=0&k=20&c=0t-EGRLmVQvE6gDdbAw3XWm0G84ODOkYG_HnUrJM09I=" alt="Proveedores">
+                                    <h2>Proveedores</h2>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="nav-link">
-                            <a href="{{ route('proveedores.index') }}">
-                                <img src="https://png.pngtree.com/png-vector/20191028/ourmid/pngtree-trolley-icon-isolated-on-abstract-background-png-image_1901088.jpg" alt="Proveedores">
-                                <h2>Proveedores</h2>
-                            </a>
+                        <div class="col-12 col-md-6 mb-4">
+                            <div class="nav-link">
+                                <a href="{{ route('clientes.index') }}">
+                                    <img src="https://img.freepik.com/vector-premium/imagen-vectorial-icono-apoyo-comunidad-puede-usar-caridad_120816-342146.jpg?w=360" alt="Clientes">
+                                    <h2>Clientes</h2>                                    </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="nav-link">
-                            <a href="{{ route('clientes.index') }}">
-                                <img src="cccccccccccccccccccccccccccccc" alt="Clientes">
-                                <h2>Clientes</h2>
-                            </a>
+                        <div class="col-12 col-md-6 mb-4">
+                            <div class="nav-link">
+                                <a href="{{ route('proyectos.index') }}">
+                                    <img src="https://png.pngtree.com/png-vector/20190721/ourmid/pngtree-checklist-icon-for-your-project-png-image_1560043.jpg" alt="Proyectos">
+                                    <h2>Proyectos</h2>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="nav-link">
-                            <a href="{{ route('proyectos.index') }}">
-                                <img src="https://png.pngtree.com/png-vector/20190721/ourmid/pngtree-checklist-icon-for-your-project-png-image_1560043.jpg" alt="Proyectos">
-                                <h2>Proyectos</h2>
-                            </a>
+                        <div class="col-12 col-md-6 mb-4">
+                            <div class="nav-link">
+                                <a href="{{ route('anticipos.index') }}">
+                                    <img src="https://png.pngtree.com/png-vector/20220730/ourlarge/pngtree-payment-icon-black-background-invest-share-vector-png-image_19327728.jpg" alt="Anticipos">
+                                    <h2>Anticipos</h2>
+                                </a>
+                            </div>
                         </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="nav-link">
-                            <a href="{{ route('anticipos.index') }}">
-                                <img src="aaaaaaaaaaaaaaaaaaaaaaaaaaaa" alt="Anticipos">
-                                <h2>Anticipos</h2>
-                            </a>
-                        </div>
-                    </div>
-                    <div class="col-md-6 mb-4">
-                        <div class="nav-link">
-                            <a href="{{ route('pagos.index') }}">
-                                <img src="ppppppppppppppppppppppppppppppppp" alt="Pagos">
-                                <h2>Pagos</h2>
-                            </a>
+                        <div class="col-12 col-md-6 mb-4">
+                            <div class="nav-link">
+                                <a href="{{ route('pagos.index') }}">
+                                    <img src="https://st5.depositphotos.com/24613802/69022/v/450/depositphotos_690228558-stock-illustration-wallet-icon-simple-style.jpg" alt="Pagos">
+                                    <h2>Pagos</h2>
+                                </a>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
-
-            @include('partials.footer')    
-
         </div>
     </div>
+        @include('partials.footer')
+    </div>
 
-    <!-- Bootstrap JS (necessary for dropdown) -->
+    <!-- Bootstrap JS -->
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
 </body>

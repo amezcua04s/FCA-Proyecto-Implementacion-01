@@ -43,9 +43,10 @@ class ClienteController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(Cliente $cliente)
+    public function show(string $id)
     {
-        //
+        $cliente = Cliente::findOrFail($id);
+        return view('dashboard.cliente.show', compact('cliente'));
     }
 
     /**
@@ -73,8 +74,15 @@ class ClienteController extends Controller
      */
     public function destroy($id)
     {
+        // Encontrar el cliente
         $cliente = Cliente::findOrFail($id);
+    
+        // Actualizar los anticipos para desvincular el cliente
+        $cliente->anticipos()->update(['cliente' => null]);
+    
+        // Eliminar el cliente
         $cliente->delete();
+    
         return redirect()->route('clientes.index')->with('status', 'Cliente eliminado con éxito');
     }
 }

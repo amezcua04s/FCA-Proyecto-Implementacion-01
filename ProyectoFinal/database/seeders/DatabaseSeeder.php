@@ -6,6 +6,8 @@ use App\Models\User;
 use App\Models\Proveedor;
 use App\Models\Cliente;
 use App\Models\Proyecto;
+use App\Models\Anticipo;
+use App\Models\Pago;
 
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
@@ -26,8 +28,18 @@ class DatabaseSeeder extends Seeder
             'materno' => 'as',
             'email' => 'admin@example.com',
             'password' => bcrypt('password'),
-            'activo' => true,
             'admin' => true,
+            'super' => true,
+        ]);
+        User::create([
+            'name' => 'User',
+            'paterno' => 'User',
+            'materno' => 'as',
+            'email' => 'santiago@gmail.com',
+            'password' => bcrypt('12345678'),
+            'admin' => false,
+            'super' => false,
+
         ]);
 
         Proveedor::create([
@@ -37,7 +49,6 @@ class DatabaseSeeder extends Seeder
             'domicilio' => 'Calle 123',
             'email' => 'ejemplo@hotmail.com',
             'telefono' => '1234567890',
-            'activo' => true,
         ]);
 
         Cliente::create([
@@ -47,19 +58,37 @@ class DatabaseSeeder extends Seeder
             'domicilio' => 'Calle 123',
             'email' => 'hola@ejemplo.com',  
             'telefono' => '1234567890',
-            'activo' => true,
         ]);
 
         Proyecto::create([
             'nombre' => 'Proyecto 1',
             'concepto' => 'Descripción del proyecto 1',
-            'fecha_inicio' => '2024-11-27',
-            'fecha_fin' => '2024-11-27',
-            'activo' => true,
+            'inicio' => '2024-11-27',
+            'fin' => '2024-11-27',
             'subtotal' => 1000,
             'iva' => 160,
             'total' => 1160,
+            'pagado' => 100,
+            'anticipado'=> 100,
             'comentarios' => 'Comentarios del proyecto 1',
+        ]);
+
+        Anticipo::create([
+            'proyecto' => 1,
+            'cliente' => 1,
+            'fecha' => '2024-11-27',
+            'monto' => 100,
+            'metodo' => 'transferencia',
+            'referencia' => '1234567890',
+        ]);
+
+        Pago::create([
+            'proyecto' => 1,
+            'proveedor' => 1,
+            'fecha' => '2024-11-27',
+            'monto' => 100,
+            'metodo' => 'transferencia',
+            'referencia' => '1234567890',
         ]);
 
 

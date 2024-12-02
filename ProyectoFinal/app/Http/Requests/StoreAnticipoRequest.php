@@ -3,6 +3,7 @@
 namespace App\Http\Requests;
 
 use Illuminate\Foundation\Http\FormRequest;
+use App\Models\Proyecto;
 
 class StoreAnticipoRequest extends FormRequest
 {
@@ -26,10 +27,21 @@ class StoreAnticipoRequest extends FormRequest
             'cliente' => 'required|exists:cliente,id',
             'monto' => 'required|numeric|min:0',
             'fecha' => 'required|date',
-            'metodo' => 'required|in:Efectivo,Transferencia,Cheque',
+            'metodo' => 'required|in:Deposito,Transferencia',
             'referencia' => 'required|string|max:255',
             'activo' => 'boolean',
         ];
+    }
+
+    protected function prepareForValidation()
+    {
+        $proyecto = Proyecto::find($this->input('proyecto'));
+        $monto = $this->input('monto');
+        $porPagar = $proyecto->total - $proyecto->pagado - $monto;
+
+        if ($porPagar < 0) {
+            $this->merge(['porPagar' => $porPagar]);
+        }
     }
 
     /**
@@ -37,7 +49,7 @@ class StoreAnticipoRequest extends FormRequest
      *
      * @return array<string, string>
      */
-    public function messages(): array
+    public function messages()
     {
         return [
             //TO DO
