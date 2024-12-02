@@ -44,10 +44,25 @@ class StorePagoRequest extends FormRequest
         }
     }
 
-    public function messages()
+    public function messages(): array
     {
         return [
-            //TO DO
+            'proyecto.required' => 'Se esperaba un proyecto',
+            'proyecto.exists' => 'Se esperaba un proyecto existente',
+            'proveedor.required' => 'Se esperaba un proveedor',
+            'proveedor.exists' => 'Se esperaba un proveedor existente',
+            'monto.required' => 'Se esperaba un monto',
+            'monto.numeric' => 'Se esperaba un número',
+            'monto.min' => 'Se esperaba un monto mínimo de $0',
+            'fecha.required' => 'Se esperaba una fecha',
+            'fecha.date' => 'Se esperaba una fecha',
+            'metodo.required' => 'Se esperaba un método',
+            'metodo.string' => 'Se esperaba una cadena',
+            'metodo.max' => 'El máximo de caracteres es 255',
+            'referencia.required' => 'Se esperaba una referencia',
+            'referencia.string' => 'Se esperaba una cadena',
+            'referencia.max' => 'El máximo de caracteres es 255',
+            'activo.boolean' => 'Se esperaba un valor booleano (true o false)',
         ];
     }
 }
