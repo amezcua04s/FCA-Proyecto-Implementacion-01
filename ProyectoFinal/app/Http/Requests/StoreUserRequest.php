@@ -39,7 +39,22 @@ class StoreUserRequest extends FormRequest
     public function messages(): array
     {
         return [
-        //TO DO
+            'name.required' => 'Se esperaba un nombre',
+            'name.string' => 'Se esperaba una cadena',
+            'name.max' => 'El máximo de caracteres es 255',
+            'email.required' => 'Se esperaba un email',
+            'email.string' => 'Se esperaba una cadena',
+            'email.email' => 'Se esperaba un email',
+            'email.max' => 'El máximo de caracteres es 255',
+            'email.unique' => 'Se esperaba un email diferente',
+            'password.nullable' => ' ',
+            'password.string' => 'Se esperaba una cadena',
+            'password.min' => 'Se esperaban mínimo 8 caracteres',
+            'password.confirmed' => 'Se confirmó el password',
+            'password_confirmation.nullable' => ' ',
+            'password_confirmation.string' => 'Se esperaba una cadena',
+            'password_confirmation.min' => 'Se esperaban mínimo 8 caracteres',
+            'admin.boolean' => 'Se esperaba un valor booleano (true o false)',
         ];
     }
 }

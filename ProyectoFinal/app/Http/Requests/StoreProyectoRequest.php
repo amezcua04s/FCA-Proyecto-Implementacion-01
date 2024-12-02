@@ -42,7 +42,30 @@ class StoreProyectoRequest extends FormRequest
     public function messages(): array
     {
         return [
-            //TO DO
+            'nombre.required' => 'Se esperaba un nombre',
+            'nombre.string' => 'Se esperaba una cadena',
+            'nombre.max' => 'El máximo de caracteres es 255',
+            'activo.boolean' => 'Se esperaba un valor booleano (true o false)',
+            'fecha_inicio.required' => 'Se esperaba una fecha inicial',
+            'fecha_inicio.date' => 'Se esperaba una fecha',
+            'fecha_fin.required' => 'Se esperaba una fecha final',
+            'fecha_fin.date' => 'Se esperaba una fecha',
+            'fecha_fin.after_or_equal' => 'Se esperaba una fecha igual o después a la fecha inicial',
+            'subtotal.required' => 'Se esperaba un subtotal',
+            'subtotal.numeric' => 'Se esperaba un número',
+            'subtotal.min' => 'Se esperaba un mínimo de $0',
+            'iva.required' => 'Se esperaba el IVA',
+            'iva.numeric' => 'Se esperaba un número',
+            'iva.min' => 'Se esperaba un mínimo de $0',
+            'total.required' => 'Se esperaba el total',
+            'total.numeric' => 'Se esperaba un número',
+            'total.min' => 'Se esperaba un mínimo de $0',
+            'concepto.nullable' => ' ',
+            'concepto.string' => 'Se esperaba una cadena',
+            'concepto.max' => 'El máximo de caracteres es 1000',
+            'comentarios.nullable' => ' ',
+            'comentarios.string' => 'Se esperaba una cadena',
+            'comentarios.max' => 'El máximo de caracteres es 1000',
         ];
     }
 }

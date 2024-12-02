@@ -34,7 +34,27 @@ class StoreClienteRequest extends FormRequest
     public function messages()
     {
         return [
-           //TO DO
+            'razon.required' => 'Se esperaba una razón',
+            'razon.string' => 'Se esperaba una cadena',
+            'razon.max' => 'El máximo de caracteres es 255',
+            'razon.unique' => 'Se esperaba una razón diferente',
+            'persona.required' => 'Se esperaba una persona',
+            'persona.in' => 'Se esperaba una persona física o moral',
+            'rfc.required' => 'Se esperaba un RFC',
+            'rfc.string' => 'Se esperaba una cadena',
+            'rfc.max' => 'El máximo de caracteres es 255',
+            'domicilio.required' => 'Se esperaba un domicilio',
+            'domicilio.string' => 'Se esperaba una cadena',
+            'domicilio.max' => 'El máximo de caracteres es 255',
+            'email.required' => 'Se esperaba un email',
+            'email.string' => 'Se esperaba una cadena',
+            'email.email' => 'Se esperaba un email',
+            'email.max' => 'El máximo de caracteres es 255',
+            'telefono.nullable' => ' ',
+            'telefono.string' => 'Se esperaba una cadena',
+            'telefono.max' => 'El máximo de caracteres es 10',
+            'telefono.unique' => 'Se esperaba un teléfono diferente',
+
         ];
     }
 }
