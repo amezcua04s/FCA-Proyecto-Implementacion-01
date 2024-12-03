@@ -3,25 +3,27 @@
 namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
-use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 
 class User extends Authenticatable
 {
-    /** @use HasFactory<\Database\Factories\UserFactory> */
     use HasFactory, Notifiable;
 
     /**
      * The attributes that are mass assignable.
      *
-     * @var array<int, string>
+     * @var array
      */
     protected $fillable = [
-        'name',
-        'email',
-        'password',
+        'name', 'paterno', 'materno', 'email', 'password', 'admin', 'restablecer'
     ];
+
+    /**
+     * El atributo esta protegido por el modelo, es decir, la tabla esta protegida
+     */
+    protected $table = 'users';
 
     /**
      * The attributes that should be hidden for serialization.
@@ -32,6 +34,12 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function isAdmin()
+    {
+        // Assuming you have an 'is_admin' column in your users table
+        return $this->admin;
+    }
 
     /**
      * Get the attributes that should be cast.
