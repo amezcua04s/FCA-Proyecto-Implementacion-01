@@ -9,7 +9,7 @@
  * El pago que se cancelará debe estar previamente registrado en el sistema
 
 ## Postcondiciones
- * El pago que será cancelado se mostrará como "Reembolso", y se quitará de las operaciones, para que las cantidades no se vean afectadas, sin posibilidad de cambiar de estatus nuevamente
+ * El pago que será cancelado se mostrará como "Reembolso", y se quitará de las operaciones, para que lgit pas cantidades no se vean afectadas, sin posibilidad de cambiar de estatus nuevamente
    
 ## Tipo 
  * Secundario

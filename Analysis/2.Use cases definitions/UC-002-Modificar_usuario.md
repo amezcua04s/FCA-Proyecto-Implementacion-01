@@ -41,6 +41,7 @@ El administrador ingresará al apartado de __*Usuarios*__, seleccionara el botó
 
         * Tipo de usuario       > Usuario
 
+        * Activo                [X]
    |Regresar|||||||||Guardar|
    |:-:|:-:|:-:|:-:|:-:|-|-|-|-|-|
 ---
