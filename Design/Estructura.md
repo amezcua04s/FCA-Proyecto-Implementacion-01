@@ -1,9 +1,5 @@
-# Archivo para definir estructura de la carpeta 
-> ELIMINAR PARA LA VERSION FINAL
+# Diagrama de entidad relación
+### Diagrama que muestra la BD del sistema, de forma conceptual 
 
-## Carpetas
-* 1.Use-Case-Diagrams
-* 2.Class-Diagram
-* 3.Sequence-Diagrams
-* 4.DataBase-Diagram
-* 5.Overview-Diagram
+
+![implementacion drawio](https://github.com/user-attachments/assets/4da05b4a-dfc3-44d7-8a24-9a5e314204d2)
