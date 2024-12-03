@@ -13,16 +13,16 @@ return new class extends Migration
     {
         Schema::create('pago', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('proyecto_id')->nullable();
-            $table->unsignedBigInteger('proveedor_id')->nullable();
+            $table->unsignedBigInteger('proyecto');
+            $table->unsignedBigInteger('proveedor');
             $table->decimal('monto', 10, 2);
             $table->date('fecha');
             $table->enum('metodo', ['Deposito', 'Transferencia'])->default('Transferencia');
             $table->string('referencia', 50)->default('anticipo');
             $table->timestamps();
 
-            $table->foreign('proyecto_id')->references('id')->on('proyecto')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('proveedor_id')->references('id')->on('proveedor')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('proyecto')->references('id')->on('proyecto')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('proveedor')->references('id')->on('proveedor')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

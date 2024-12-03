@@ -10,7 +10,7 @@
     <body>
         <div class="mt-0">
             <h2 class="mb-4">Formulario de Usuario</h2>
-            <form method="POST" action="{{ route('usuarios.update', $user) }}">
+            <form method="POST" action="{{ route('usuarios.store') }}">
                 @csrf
                 <div class="row">
                     <div class="mb-3 col-4">
@@ -32,7 +32,7 @@
                         <input type="email" class="form-control" id="email" name="email" value="{{ old('email', $user->email ?? '') }}" autocomplete="email" required>
                     </div>
                 </div>
-                <div class="row" id="passwordFields" style="display: none;">
+                <div class="row" id="passwordFields" style="display: false;">
                     <div class="mb-3 col-md-6 col-sm-12">
                         <label for="password" class="form-label">Contraseña</label>
                         <input type="password" class="form-control" id="password" name="password" autocomplete="new-password">
@@ -50,17 +50,17 @@
                         <option value="0" {{ old('admin', $user->admin ?? '') == '0' ? 'selected' : '' }}>Usuario</option>
                     </select>
                 </div>
-                <div class="mb-3 form-check">
-                    <!-- El campo "restablecer" se enviará con el valor de 1 si se marca -->
-                    <input type="checkbox" class="form-check-input" id="restablecer" name="restablecer" value="1" autocomplete="off" onchange="generarContrasena()">
-                    <label class="form-check-label" for="restablecer">Restablecer contraseña</label>
-                </div>
-                <!-- Modal de confirmación -->
-                <div class="modal fade" id="modalRestablecer" tabindex="-1" aria-labelledby="modalRestablecerLabel" aria-hidden="true">
+                
+                <button type="button" class="btn btn-danger btn-sm" onclick="generarContrasena()" data-bs-toggle="modal" data-bs-target="#modalRestablecer">
+                    Restablecer contraseña
+                </button>
+
+                <!-- Modal -->
+                <div class="modal fade" id="modalRestablecer" tabindex="-1" aria-labelledby="modalRestablecer" aria-hidden="true">
                     <div class="modal-dialog">
                         <div class="modal-content">
                             <div class="modal-header">
-                                <h5 class="modal-title" id="modalRestablecerLabel">Nueva contraseña</h5>
+                                <h5 class="modal-title" id="modalRestablecer">Nueva contraseña</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -69,11 +69,12 @@
                             </div>
                             <div class="modal-footer">
                                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Continuar</button>
+
                             </div>
                         </div>
                     </div>
                 </div>
-                <div class="mb-5">
+                <div class="mb-5 mt-3">
                     <button type="submit" class="btn btn-primary w-100">Guardar</button>
                 </div>
             </form>
@@ -85,28 +86,23 @@
 
         <script>
             function generarContrasena() {
-                var caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
-                var longitud = 8;
-                var contrasena = "";
-
-                // Generar contraseña aleatoria de longitud 8
-                for (var i = 0; i < longitud; i++) {
-                    var aleatorio = Math.floor(Math.random() * caracteres.length);
-                    contrasena += caracteres.charAt(aleatorio);
-                }
-
-                // Mostrar la contraseña generada en el HTML
-                document.getElementById("nuevaCon").textContent = contrasena;
-                document.getElementById("password").value = contrasena;
-                document.getElementById("password_confirmation").value = contrasena;
-
-                // Cambiar el valor del checkbox a "1" cuando se seleccione
-                document.getElementById("restablecer").checked = true;
-
-                // Mostrar el modal
-                var modalRestablecer = new bootstrap.Modal(document.getElementById('modalRestablecer'));
-                modalRestablecer.show();
+            var caracteres = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789!@#$%^&*()_+";
+            var longitud = 8;
+            var contrasena = "";
+            
+            // Generar contraseña aleatoria de longitud 8
+            for (var i = 0; i < longitud; i++) {
+                var aleatorio = Math.floor(Math.random() * caracteres.length);
+                contrasena += caracteres.charAt(aleatorio);
             }
+            
+            // Mostrar la contraseña generada en el HTML
+            document.getElementById("nuevaCon").textContent = contrasena;
+
+            document.getElementById("password").value = contrasena;
+            document.getElementById("password_confirmation").value = contrasena;
+        }
+               
         </script>
     </body>
 </html>

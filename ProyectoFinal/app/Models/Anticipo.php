@@ -12,7 +12,7 @@ class Anticipo extends Model
     protected $table = 'anticipo'; // Asegúrate de que el nombre de la tabla sea correcto
 
     protected $fillable = [
-        'proyecto_id', 'cliente_id', 'monto', 'fecha', 'metodo', 'referencia', 'activo'
+        'proyecto', 'cliente', 'monto', 'fecha', 'metodo', 'referencia', 'activo'
     ];
 
 

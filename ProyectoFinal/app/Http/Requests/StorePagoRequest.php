@@ -23,11 +23,11 @@ class StorePagoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'proyecto_id' => 'required|exists:proyecto,id',
-            'proveedor_id' => 'required|exists:proveedor,id',
+            'proyecto' => 'required|exists:proyecto,id',
+            'proveedor' => 'required|exists:proveedor,id',
             'monto' => 'required|numeric|min:0',
             'fecha' => 'required|date',
-            'metodo' => 'required|in:Deposito,Transferencia',
+            'metodo' => 'required|string|max:255',
             'referencia' => 'required|string|max:255',
             'activo' => 'boolean',
         ];
@@ -47,17 +47,18 @@ class StorePagoRequest extends FormRequest
     public function messages(): array
     {
         return [
-            'proyecto_id.required' => 'Se esperaba un proyecto',
-            'proyecto_id.exists' => 'Se esperaba un proyecto existente',
-            'proveedor_id.required' => 'Se esperaba un proveedor',
-            'proveedor_id.exists' => 'Se esperaba un proveedor existente',
+            'proyecto.required' => 'Se esperaba un proyecto',
+            'proyecto.exists' => 'Se esperaba un proyecto existente',
+            'proveedor.required' => 'Se esperaba un proveedor',
+            'proveedor.exists' => 'Se esperaba un proveedor existente',
             'monto.required' => 'Se esperaba un monto',
             'monto.numeric' => 'Se esperaba un número',
             'monto.min' => 'Se esperaba un monto mínimo de $0',
             'fecha.required' => 'Se esperaba una fecha',
             'fecha.date' => 'Se esperaba una fecha',
             'metodo.required' => 'Se esperaba un método',
-            'metodo.in' => 'Se esperaba un método en depósito o transferencia',
+            'metodo.string' => 'Se esperaba una cadena',
+            'metodo.max' => 'El máximo de caracteres es 255',
             'referencia.required' => 'Se esperaba una referencia',
             'referencia.string' => 'Se esperaba una cadena',
             'referencia.max' => 'El máximo de caracteres es 255',

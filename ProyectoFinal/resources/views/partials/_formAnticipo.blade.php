@@ -16,33 +16,23 @@
         <h2 class="mb-4">Anticipo</h2>
         <form method="POST" action="{{ route('anticipos.store') }}" id="anticipoForm">
             @csrf
-            <div class="mb-4">
+            <div class="mb-3">
                 <label for="proyecto" class="form-label">Proyecto</label>
-                
-                <div class="d-flex justify-content-between align-items-center mb-2">
-                    <small class="form-text text-muted">¿No encuentras el proyecto?</small>
-                    <a href="{{ route('proyectos.create') }}" class="btn btn-outline-primary btn-sm">Agregar Proyecto</a>
-                </div>
-            
                 <select class="form-select" aria-label="proyectos" id="proyecto" name="proyecto" required>
                     <option selected disabled>Seleccione un proyecto</option>
                     @foreach ($proyectos as $proyecto)
-                        <option value="{{$proyecto->id}}" 
-                                data-total="{{$proyecto->total}}" 
-                                data-anticipado="{{$proyecto->anticipado}}"
-                                @if (old('proyecto_id', $anticipo->proyecto_id ?? '') == $proyecto->id) selected @endif>
+                        <option value="{{$proyecto->id}}" data-total="{{$proyecto->total}}" data-anticipado="{{$proyecto->anticipado}}" @if (old('proyecto', $anticipo->proyecto ?? '') == $proyecto->id) selected @endif>
                             {{$proyecto->nombre}}
                         </option>
                     @endforeach
                 </select>
             </div>
-            
             <div class="mb-3">
                 <label for="cliente" class="form-label">Cliente</label>
                 <select class="form-select" aria-label="Clientes" id="cliente" name="cliente" required>
                     <option selected disabled>Seleccione un cliente</option>
                     @foreach ($clientes as $cliente)
-                        <option value="{{$cliente->id}}" @if (old('cliente_id', $anticipo->cliente_id ?? '') == $cliente->id) selected @endif>
+                        <option value="{{$cliente->id}}" @if (old('cliente', $anticipo->cliente ?? '') == $cliente->id) selected @endif>
                             {{$cliente->razon}}
                         </option>
                     @endforeach

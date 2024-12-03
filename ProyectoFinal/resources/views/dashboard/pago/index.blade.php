@@ -9,18 +9,20 @@
         </div>
     @endif
 
-    <table class="table table-striped table-bordered table-hover">
+    <table class="table table-striped table-hover">
         <thead class="table-dark">
             <tr>
-                <th scope="col">ID</th>
-                <th scope="col">Proyecto</th>
-                <th scope="col">Proveedor</th>
-                <th scope="col">Monto</th>
-                <th scope="col">Fecha</th>
-                <th scope="col">Acciones</th>
+                <th scope="col" style="width: 5%;">ID</th>
+                <th scope="col" style="width: 15%;">Proyecto</th>
+                <th scope="col" style="width: 15%;">Proveedor</th>
+                <th scope="col" style="width: 10%;">Monto</th>
+                <th scope="col" style="width: 15%;">Fecha</th>
+                <th scope="col" style="width: 20%;">Acciones</th>
+                <th></th>
+                <th></th>
             </tr>
         </thead>
-        <tbody>
+        <tbody class="table-group-divider">
             @foreach ($pagos as $pago)
             <tr>
                 <td>{{ $pago->id }}</td>
@@ -29,43 +31,61 @@
                 <td>{{ $pago->monto }}</td>
                 <td>{{ $pago->fecha }}</td>
                 <td>
-                    <div class="d-flex">
-                        <a href="{{ route('pagos.show', $pago) }}" class="btn btn-info btn-sm me-2">Ver más</a>
-                        @if (Auth::user()->admin)
-                            <a href="{{ route('pagos.edit', $pago) }}" class="btn btn-secondary btn-sm me-2">Editar</a>
-                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#modalPagoEliminar-{{ $pago->id }}">Eliminar</button>
-                        @endif
-                    </div>
-                    <!-- Modal de eliminación -->
-                    <div class="modal fade" id="modalPagoEliminar-{{ $pago->id }}" tabindex="-1" aria-labelledby="modalPagoEliminarLabel" aria-hidden="true">
-                        <div class="modal-dialog">
-                            <div class="modal-content">
-                                <div class="modal-header">
-                                    <h5 class="modal-title" id="modalPagoEliminarLabel">Confirmar eliminación</h5>
+                    <a href="{{ route('pagos.show', $pago) }}" class="btn btn-info btn-sm me-2">Ver más</a>
+                    @if (Auth::user()->admin)
+                    <a href="{{ route('pagos.edit', $pago) }}" class="btn btn-secondary btn-sm me-2">Editar</a>                <td>
+                </td>
+                <td>
+                        <form action="{{ route('pagos.destroy', $pago->id) }}" method="POST">
+                    
+                            <button type="button" class="btn btn-danger btn-sm me-2" data-bs-toggle="modal" data-bs-target="#modalEliminar">Eliminar</button>
+          
+                            <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="modalEliminar" aria-hidden="true">
+                              <div class="modal-dialog">
+                                <div class="modal-content">
+                                  <div class="modal-header">
+                                    <h5 class="modal-title fs-5" id="modalEliminar">Confirmar eliminación</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                </div>
-                                <div class="modal-body">
-                                    ¿Está seguro de que desea eliminar este pago? <br>
+                                  </div>
+                                  <div class="modal-body">
+                                    ¿Está seguro de que desea eliminar este Pago?
+                                    <br>
                                     <strong>Esta acción no se puede deshacer.</strong>
                                 </div>
-                                <div class="modal-footer">
+                                  <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    <form action="{{ route('pagos.destroy', $pago->id) }}" method="POST">
-                                        @csrf
-                                        @method('DELETE')
-                                        <button type="submit" class="btn btn-danger">Eliminar</button>
-                                    </form>
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="btn btn-danger">Eliminar</button>
+                                  </div>
                                 </div>
+                              </div>
                             </div>
-                        </div>
-                    </div>
-                </td>
-            </tr>
-            @endforeach
-        </tbody>
-    </table>
-    {{ $pagos->links() }} <!-- Paginación -->
+
+                          </form>
+                        @endif
+                    </td>
+                </tr>
+                @endforeach
+            </tbody>
+        </table>
+        {{ $pagos->links() }} <!-- Enlaces de paginación -->
+    </div>
+
 </div>
+
+<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        var confirmDeleteModal = document.getElementById('confirmDeleteModal');
+        confirmDeleteModal.addEventListener('show.bs.modal', function (event) {
+            var button = event.relatedTarget;
+            var id = button.getAttribute('data-id');
+            var form = document.getElementById('deleteForm');
+            form.action = '/pagos/' + id;
+        });
+    });
+</script>
 @endsection

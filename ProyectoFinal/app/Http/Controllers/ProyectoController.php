@@ -76,8 +76,8 @@ class ProyectoController extends Controller
     {
         $proyecto = Proyecto::findOrFail($id);
 
-        // $proyecto->anticipos()->update(['proyecto' => null]);
-        // $proyecto->pagos()->update(['proyecto' => null]);
+        $proyecto->anticipos()->update(['proyecto' => null]);
+        $proyecto->pagos()->update(['proyecto' => null]);
 
         $proyecto->delete();
         return redirect()->route('proyectos.index')->with('status', 'Proyecto eliminado con éxito');

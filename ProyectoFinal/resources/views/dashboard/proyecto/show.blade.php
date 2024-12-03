@@ -10,8 +10,8 @@
         <div class="card-body">
             <p><strong>Nombre del Proyecto:</strong> {{ $proyecto->nombre }}</p>
             <p><strong>Concepto:</strong> {{ $proyecto->concepto }}</p>
-            <p><strong>Fecha de Inicio:</strong> {{ $proyecto->inicio }}</p>
-            <p><strong>Fecha de Fin:</strong> {{ $proyecto->fin }}</p>
+            <p><strong>Fecha de Inicio:</strong> {{ $proyecto->fecha_inicio }}</p>
+            <p><strong>Fecha de Fin:</strong> {{ $proyecto->fecha_fin }}</p>
             <hr>
             <div class="row">
                 <div class="col-md-6">

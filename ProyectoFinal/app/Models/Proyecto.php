@@ -12,16 +12,16 @@ class Proyecto extends Model
     protected $table = 'proyecto'; 
 
     protected $fillable = [
-        'nombre', 'activo', 'inicio', 'fin', 'subtotal', 'iva', 'total', 'concepto', 'comentarios',
+        'nombre', 'activo', 'fecha_inicio', 'fecha_fin', 'subtotal', 'iva', 'total', 'concepto', 'comentarios',
     ];
 
     public function anticipos()
     {
-        return $this->hasMany(Anticipo::class);
+        return $this->hasMany(Anticipo::class, 'proyecto');
     }
 
     public function pagos()
     {
-        return $this->hasMany(Pago::class);
+        return $this->hasMany(Pago::class, 'proyecto');
     }
 }

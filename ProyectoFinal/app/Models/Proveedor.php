@@ -19,6 +19,6 @@ class Proveedor extends Model
 
     public function pagos()
     {
-        return $this->hasMany(Pago::class);
+        return $this->hasMany(Pago::class, 'proveedor');
     }
 }

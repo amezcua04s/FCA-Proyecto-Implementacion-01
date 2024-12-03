@@ -17,7 +17,7 @@ class Cliente extends Model
 
     public function anticipos()
     {
-        return $this->hasMany(Anticipo::class);
+        return $this->hasMany(Anticipo::class, 'cliente');
     }
 
 

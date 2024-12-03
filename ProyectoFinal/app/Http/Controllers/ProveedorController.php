@@ -75,7 +75,7 @@ class ProveedorController extends Controller
     {
         $proveedor = Proveedor::findOrFail($id);
 
-        // $proveedor->pagos()->update(['proveedor' => null]);
+        $proveedor->pagos()->update(['proveedor' => null]);
 
         $proveedor->delete();
 

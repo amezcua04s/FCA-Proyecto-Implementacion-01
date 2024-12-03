@@ -22,7 +22,7 @@ class UserController extends Controller
         // Verificar el valor de restablecer
         if ($user->restablecer == 1) {
             // Si restablecer es 1, redirigir a la pantalla de cambio de contraseña
-            return view('dashboard.user.password', compact('user'));
+            return view('dahboard.user.password', compact('user'));
         } else {
             // Si restablecer no es 1, redirigir a otra pantalla
             return view('welcome');
@@ -115,62 +115,34 @@ class UserController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(StoreUserRequest $request, $id)
+    public function update(StoreUserRequest $request, $id, $option)
     {
-    
         $user = User::findOrFail($id);
-    
+
         $request->validate([
-            'password' => 'nullable|string|min:8|confirmed',  
-            'name' => 'nullable|string|max:255',  
-            'paterno' => 'nullable|string|max:255',  
-            'materno' => 'nullable|string|max:255', 
-            'email' => 'nullable|email|unique:users,email,' . $id,
-            'admin' => 'nullable|boolean',  
+            'password' => 'required|string|min:8|confirmed',
         ]);
-        
-        //cambio de contraseña
-        if ($request->has('password') && !empty($request->password)) {
-            $user->password = bcrypt($request->password);
-        } 
-
-        //para restablecer contraseañ
-        if ($request->password === $request->password_confirmation) {
-            
-            $user->password = bcrypt($request->password);
-            
-            $user->restablecer = false;
-        }
-    
-        if ($request->has('name') && !empty($request->name)) {
-            $user->name = $request->name;
-        }
-    
-        if ($request->has('paterno') && !empty($request->paterno)) {
-            $user->paterno = $request->paterno;
-        }
-    
-        if ($request->has('materno') && !empty($request->materno)) {
-            $user->materno = $request->materno;
-        }
-    
-        if ($request->has('email') && !empty($request->email)) {
-            $user->email = $request->email;
-        }
-
-        if ($request->has('admin')) {
-            $user->admin = $request->admin;
-        }
-
-        if ($request->has('restablecer')) {
-            $user->restablecer = $request->restablecer;
-        }
-    
+        $user->password = bcrypt($request->password);
+        $user->restablecer = false;
         $user->save();
-    
+        return redirect()->route('usuarios.index')->with('status', 'Contraseña actualizada con éxito');
+        
+        
+        $data = $request->validated();
+
+        // Si la contraseña no está vacía, encripta y actualiza
+        if (!empty($data['password'])) {
+            $data['password'] = bcrypt($data['password']);
+        } else {
+            unset($data['password']);
+        }
+
+        // Actualiza el usuario con los datos validados
+        $user->update($data);
+
         return redirect()->route('usuarios.index')->with('status', 'Usuario actualizado con éxito');
+        
     }
-    
 
     /**
      * Remove the specified resource from storage.

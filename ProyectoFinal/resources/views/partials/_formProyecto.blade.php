@@ -27,12 +27,12 @@
             </div>
             <div class="row">
                 <div class="col-md-6 mb-3">
-                    <label for="inicio" class="form-label">Fecha de Inicio</label>
-                    <input type="text" class="form-control datepicker" id="inicio" name="inicio" value="{{ old('inicio', $proyecto->inicio ?? '') }}" required>
+                    <label for="fecha_inicio" class="form-label">Fecha de Inicio</label>
+                    <input type="text" class="form-control datepicker" id="fecha_inicio" name="fecha_inicio" value="{{ old('fecha_inicio', $proyecto->fecha_inicio ?? '') }}" required>
                 </div>
                 <div class="col-md-6 mb-3">
-                    <label for="fin" class="form-label">Fecha de Fin</label>
-                    <input type="text" class="form-control datepicker" id="fin" name="fin" value="{{ old('fin', $proyecto->fin ?? '') }}" required>
+                    <label for="fecha_fin" class="form-label">Fecha de Fin</label>
+                    <input type="text" class="form-control datepicker" id="fecha_fin" name="fecha_fin" value="{{ old('fecha_fin', $proyecto->fecha_fin ?? '') }}" required>
                 </div>
             </div>
             <div class="row">
@@ -65,21 +65,21 @@
                     <label for="pagado" class="form-label">Pagado</label>
                     <div class="input-group">
                         <span class="input-group-text">$</span>
-                        <input type="number" class="form-control" id="pagado" name="pagado" value="{{ old('pagado', $proyecto->pagado ?? 0) }}" readonly>
+                        <input type="number" class="form-control" id="pagado" name="pagado" value="{{ old('pagado', $proyecto->pagado ?? '') }}" readonly>
                     </div>
                 </div>
                 <div class="col col-md-4 mb-3">
                     <label for="porPagar" class="form-label">Por pagar</label>
                     <div class="input-group">
                         <span class="input-group-text">$</span>
-                        <input type="number" class="form-control" id="porPagar" name="porPagar" value="{{ old('porPagar', ($proyecto->total ?? 0) - ($proyecto->pagado ?? 0) ) }}" readonly>
+                        <input type="number" class="form-control" id="porPagar" name="porPagar" value="{{ old('pagado', $proyecto->total - $proyecto->pagado ) }}" readonly>
                     </div>
                 </div>
                 <div class="col col-md-4  mb-3">
                     <label for="anticipado" class="form-label">Anticipado</label>
                     <div class="input-group">
                         <span class="input-group-text">$</span>
-                        <input type="number" class="form-control" id="anticipado" name="anticipado" value="{{ old('anticipado', $proyecto->anticipado ?? 0) }}" readonly>
+                        <input type="number" class="form-control" id="anticipado" name="anticipadp" value="{{ old('anticipado', $proyecto->anticipado ?? '') }}" readonly>
                     </div>
                 </div>
             </div>
@@ -125,7 +125,10 @@
                 ivaInput.value = iva.toFixed(2);
                 totalInput.value = total.toFixed(2);
                 porPagarInput.value = (total - pagadoInput.value).toFixed(2);
+
             }
+
+
 
             subtotalInput.addEventListener('input', calculateValues);
         });

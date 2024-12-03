@@ -78,7 +78,7 @@ class ClienteController extends Controller
         $cliente = Cliente::findOrFail($id);
     
         // Actualizar los anticipos para desvincular el cliente
-        // $cliente->anticipos()->update(['cliente' => null]);
+        $cliente->anticipos()->update(['cliente' => null]);
     
         // Eliminar el cliente
         $cliente->delete();
