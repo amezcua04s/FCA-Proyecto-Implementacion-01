@@ -13,8 +13,8 @@ return new class extends Migration
     {
         Schema::create('anticipo', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('proyecto')->nullable();
-            $table->unsignedBigInteger('cliente')->nullable();
+            $table->unsignedBigInteger('proyecto_id')->nullable();
+            $table->unsignedBigInteger('cliente_id')->nullable();
             $table->decimal('monto', 10, 2);
             $table->date('fecha');
             $table->enum('metodo',['Deposito', 'Transferencia'])->default('Transferencia');
@@ -22,8 +22,8 @@ return new class extends Migration
            
             $table->timestamps();
 
-           $table->foreign('proyecto')->references('id')->on('proyecto')->onDelete('cascade')->onUpdate('cascade');
-            $table->foreign('cliente')->references('id')->on('cliente')->onDelete('cascade')->onUpdate('cascade');
+           $table->foreign('proyecto_id')->references('id')->on('proyecto')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('cliente_id')->references('id')->on('cliente')->onDelete('cascade')->onUpdate('cascade');
         });
     }
 

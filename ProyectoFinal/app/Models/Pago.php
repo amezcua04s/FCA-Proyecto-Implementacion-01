@@ -14,7 +14,7 @@ class Pago extends Model
 
     protected $table = 'pago';
     protected $fillable = [
-        'proyecto', 'proveedor', 'monto', 'fecha', 'metodo', 'referencia', 'activo',
+        'proyecto_id', 'proveedor_id', 'monto', 'fecha', 'metodo', 'referencia', 'activo',
     ];
 
     public function proyecto()

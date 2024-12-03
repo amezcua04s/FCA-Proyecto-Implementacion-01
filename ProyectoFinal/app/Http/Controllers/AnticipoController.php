@@ -22,8 +22,8 @@ class AnticipoController extends Controller
     public function index()
     {
          
-        $anticipos = Anticipo::join('proyecto', 'anticipo.proyecto', '=', 'proyecto.id')
-            ->join('cliente', 'anticipo.cliente', '=', 'cliente.id')
+        $anticipos = Anticipo::join('proyecto', 'anticipo.proyecto_id', '=', 'proyecto.id')
+            ->join('cliente', 'anticipo.cliente_id', '=', 'cliente.id')
             ->select('anticipo.*', 'proyecto.nombre as proyectoNombre', 'cliente.razon as clienteRazon')
             ->paginate(10);
         
@@ -48,7 +48,7 @@ class AnticipoController extends Controller
      */
     public function store(StoreAnticipoRequest $request)
     {
-        $proyecto = Proyecto::find($request->input('proyecto'));
+        $proyecto = Proyecto::find($request->input('proyecto_id'));
         $monto = $request->input('monto');
         $porAnticipar = $proyecto->total - $proyecto->pagado - $monto;
 
@@ -58,8 +58,8 @@ class AnticipoController extends Controller
 
         // Crear un nuevo anticipo
         $anticipo = new Anticipo();
-        $anticipo->proyecto = $request->input('proyecto');
-        $anticipo->cliente = $request->input('cliente');
+        $anticipo->proyecto_id = $request->input('proyecto_id');
+        $anticipo->cliente_id = $request->input('cliente_id');
         $anticipo->monto = $monto;
         $anticipo->fecha = $request->input('fecha');
         $anticipo->metodo = $request->input('metodo');
@@ -78,8 +78,8 @@ class AnticipoController extends Controller
      */
     public function show($id)
     {
-        $anticipo = Anticipo::join('proyecto', 'anticipo.proyecto', '=', 'proyecto.id')
-            ->join('cliente', 'anticipo.cliente', '=', 'cliente.id')
+        $anticipo = Anticipo::join('proyecto', 'anticipo.proyecto_id', '=', 'proyecto.id')
+            ->join('cliente', 'anticipo.cliente_id', '=', 'cliente.id')
             ->select(
                 'anticipo.id',
                 'anticipo.monto', 
@@ -130,7 +130,7 @@ class AnticipoController extends Controller
 
         $anticipo = Anticipo::findOrFail($id);
     
-        $proyecto = Proyecto::findOrFail($anticipo->proyecto);
+        $proyecto = Proyecto::findOrFail($anticipo->proyecto_id);
     
         $proyecto->anticipado -= $anticipo->monto;
         $proyecto->save(); 

@@ -9,7 +9,7 @@
         </div>
     @endif
 
-    <table class="table table-striped table-hover">
+    <table class="table table-striped table-bordered table-hoverr">
         <thead class="table-dark">
             <tr>
                 <th scope="col" style="width: 5%;">ID</th>
@@ -17,10 +17,9 @@
                 <th scope="col" style="width: 25%;">Fecha de Inicio</th>
                 <th scope="col" style="width: 25%;">Fecha de Fin</th>
                 <th scope="col" style="width: 25%;">Acciones</th>
-                <th></th>
             </tr>
         </thead>
-        <tbody class="table-group-divider">
+        <tbody>
             @foreach ($proyectos as $proyecto)
             <tr>
                 <td>{{ $proyecto->id }}</td>
@@ -28,58 +27,42 @@
                 <td>{{ $proyecto->inicio }}</td>
                 <td>{{ $proyecto->fin }}</td>
                 <td>
-                    <a href="{{ route('proyectos.show', $proyecto) }}" class="btn btn-info btn-sm me-2">Ver más</a>
-                    @if (Auth::user()->admin)
-                    <a href="{{ route('proyectos.edit', $proyecto) }}" class="btn btn-secondary btn-sm me-2">Editar</a>
-                </td>
-                <td>
-                        <form action="{{ route('proyectos.destroy', $proyecto->id) }}" method="POST">
-                    
-                            <button type="button" class="btn btn-danger btn-sm me-2" data-bs-toggle="modal" data-bs-target="#modalEliminar">Eliminar</button>
-          
-                            <div class="modal fade" id="modalEliminar" tabindex="-1" aria-labelledby="modalEliminar" aria-hidden="true">
-                              <div class="modal-dialog">
-                                <div class="modal-content">
-                                  <div class="modal-header">
-                                    <h5 class="modal-title fs-5" id="modalEliminar">Confirmar eliminación</h5>
+                    <div class="d-flex">
+                        <a href="{{ route('proyectos.show', $proyecto) }}" class="btn btn-info btn-sm me-2">Ver más</a>
+                        @if (Auth::user()->admin)
+                            <a href="{{ route('proyectos.edit', $proyecto) }}" class="btn btn-secondary btn-sm me-2">Editar</a>
+                            <button type="button" class="btn btn-danger btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal-{{ $proyecto->id }}">Eliminar</button>
+                        @endif
+                    </div>
+                    <!-- Modal de eliminación -->
+                    <div class="modal fade" id="exampleModal-{{ $proyecto->id }}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <div class="modal-dialog">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h5 class="modal-title fs-5" id="exampleModalLabel">¿Desea eliminar este proyecto?</h5>
                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                                  </div>
-                                  <div class="modal-body">
-                                    ¿Está seguro de que desea eliminar este proyecto?
-                                    <br>
+                                </div>
+                                <div class="modal-body">
                                     <strong>Esta acción no se puede deshacer.</strong>
                                 </div>
-                                  <div class="modal-footer">
+                                <div class="modal-footer">
                                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cancelar</button>
-                                    @csrf
-                                    @method('DELETE')
-                                    <button type="submit" class="btn btn-danger">Eliminar</button>
-                                  </div>
+                                    <form action="{{ route('proyectos.destroy', $proyecto->id) }}" method="POST">
+                                        @csrf
+                                        @method('DELETE')
+                                        <button type="submit" class="btn btn-danger">Eliminar</button>
+                                    </form>
                                 </div>
-                              </div>
                             </div>
-                          </form>                    @endif
+                        </div>
+                    </div>
                 </td>
             </tr>
             @endforeach
         </tbody>
     </table>
-    {{ $proyectos->links() }} <!-- Enlaces de paginación -->
+    {{ $proyectos->links() }} <!-- Paginación -->
 </div>
-
-
-<!-- Bootstrap JS -->
 <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js"></script>
-<script>
-    document.addEventListener('DOMContentLoaded', function() {
-        var confirmDeleteModal = document.getElementById('confirmDeleteModal');
-        confirmDeleteModal.addEventListener('show.bs.modal', function (event) {
-            var button = event.relatedTarget;
-            var id = button.getAttribute('data-id');
-            var form = document.getElementById('deleteForm');
-            form.action = '/proyectos/' + id;
-        });
-    });
-</script>
 @endsection

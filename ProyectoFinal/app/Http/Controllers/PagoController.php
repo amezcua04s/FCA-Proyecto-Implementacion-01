@@ -22,8 +22,8 @@ class PagoController extends Controller
     public function index()
     {
         
-        $pagos = Pago::join('proyecto', 'pago.proyecto', '=', 'proyecto.id')
-            ->join('proveedor', 'pago.proveedor', '=', 'proveedor.id')
+        $pagos = Pago::join('proyecto', 'pago.proyecto_id', '=', 'proyecto.id')
+            ->join('proveedor', 'pago.proveedor_id', '=', 'proveedor.id')
             ->select('pago.*', 'proyecto.nombre as proyectoNombre', 'proveedor.razon as proveedorRazon')
             ->paginate(10);
        
@@ -60,8 +60,8 @@ class PagoController extends Controller
 
         // Crear un nuevo pago
         $pago = new Pago();
-        $pago->proyecto = $request->input('proyecto');
-        $pago->proveedor = $request->input('proveedor');
+        $pago->proyecto_id = $request->input('proyecto');
+        $pago->proveedor_id = $request->input('proveedor');
         $pago->monto = $monto;
         $pago->fecha = $request->input('fecha');
         $pago->metodo = $request->input('metodo');
@@ -81,8 +81,8 @@ class PagoController extends Controller
     public function show($id)
     {
         $pago       = Pago::with(['proyecto', 'proveedor'])->findOrFail($id);
-        $proyecto   = Proyecto::find($pago->proyecto);
-        $proveedor  = Proveedor::find($pago->proveedor);
+        $proyecto   = Proyecto::find($pago->proyecto_id);
+        $proveedor  = Proveedor::find($pago->proveedor_id);
 
      
         return view('dashboard.pago.show', compact('pago', 'proyecto', 'proveedor'));
@@ -119,7 +119,7 @@ class PagoController extends Controller
     {
         $pago = Pago::findOrFail($id);
     
-        $proyecto = Proyecto::findOrFail($pago->proyecto);
+        $proyecto = Proyecto::findOrFail($pago->proyecto_id);
     
         $proyecto->pagado -= $pago->monto;
         $proyecto->save(); 

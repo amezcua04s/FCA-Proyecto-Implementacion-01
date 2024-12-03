@@ -23,8 +23,8 @@ class StoreAnticipoRequest extends FormRequest
     public function rules(): array
     {
         return [
-            'proyecto' => 'required|exists:proyecto,id',
-            'cliente' => 'required|exists:cliente,id',
+            'proyecto_id' => 'required|exists:proyecto,id',
+            'cliente_id' => 'required|exists:cliente,id',
             'monto' => 'required|numeric|min:0',
             'fecha' => 'required|date',
             'metodo' => 'required|in:Deposito,Transferencia',
@@ -52,17 +52,17 @@ class StoreAnticipoRequest extends FormRequest
     public function messages()
     {
         return [
-           'proyecto.required' => 'Se esperaba un proyecto',
-            'proyecto.exists' => 'Se esperaba un proyecto existente',
-            'cliente.required' => 'Se esperaba un cliente',
-            'cliente.exists' => 'Se esperaba un cliente existente',
+           'proyecto_id.required' => 'Se esperaba un proyecto',
+            'proyecto_id.exists' => 'Se esperaba un proyecto existente',
+            'cliente_id.required' => 'Se esperaba un cliente',
+            'cliente_id.exists' => 'Se esperaba un cliente existente',
             'monto.required' => 'Se esperaba un monto',
             'monto.numeric' => 'Se esperaba un número',
             'monto.min' => 'Se esperaba un monto mínimo de $0',
             'fecha.required' => 'Se esperaba una fecha',
             'fecha.date' => 'Se esperaba una fecha',
             'metodo.required' => 'Se esperaba un método',
-            'metodo.in' => 'Se esperaba un método en efectivo, transferencia o cheque',
+            'metodo.in' => 'Se esperaba un método en depósito o transferencia',
             'referencia.required' => 'Se esperaba una referencia',
             'referencia.string' => 'Se esperaba una cadena',
             'referencia.max' => 'El máximo de caracteres es 255',

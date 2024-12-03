@@ -26,7 +26,7 @@ class StoreUserRequest extends FormRequest
             'materno' => 'required|string|max:255',
             'email' => 'required|string|email|max:255|unique:users,email,' . $this->route('usuario'),
             'admin' => 'required|boolean',
-            'restablecer' => 'required|boolean',
+            'restablecer' => 'nullable|boolean',
         ];
 
         if ($this->isMethod('post') || $this->filled('password')) {
@@ -62,6 +62,7 @@ class StoreUserRequest extends FormRequest
             'password_confirmation.string' => 'Se esperaba una cadena',
             'password_confirmation.min' => 'Se esperaban mínimo 8 caracteres',
             'admin.boolean' => 'Se esperaba un valor booleano (true o false)',
+            'restablecer.boolean' => 'Se esperaba un valor booleano (true o false)',
         ];
     }
 }

@@ -21,7 +21,7 @@
                 <select class="form-select" aria-label="proyectos" id="proyecto" name="proyecto" required>
                     <option selected disabled>Seleccione un proyecto</option>
                     @foreach ($proyectos as $proyecto)
-                        <option value="{{$proyecto->id}}" data-total="{{$proyecto->total}}" data-pagado="{{$proyecto->pagado}}" @if (old('proyecto', $pago->proyecto ?? '') == $proyecto->id) selected @endif>
+                        <option value="{{$proyecto->id}}" data-total="{{$proyecto->total}}" data-pagado="{{$proyecto->pagado}}" @if (old('proyecto_id', $pago->proyecto_id ?? '') == $proyecto->id) selected @endif>
                             {{$proyecto->nombre}}
                         </option>
                     @endforeach
@@ -32,7 +32,7 @@
                 <select class="form-select" aria-label="proveedores" id="proveedor" name="proveedor" required>
                     <option selected disabled>Seleccione un proveedor</option>
                     @foreach ($proveedores as $proveedor)
-                        <option value="{{$proveedor->id}}" @if (old('proveedor', $pago->proveedor ?? '') == $proveedor->id) selected @endif>
+                        <option value="{{$proveedor->id}}" @if (old('proveedor_id', $pago->proveedor_id ?? '') == $proveedor->id) selected @endif>
                             {{$proveedor->razon}}
                         </option>
                     @endforeach

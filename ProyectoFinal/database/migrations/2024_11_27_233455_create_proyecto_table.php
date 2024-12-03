@@ -21,8 +21,8 @@ return new class extends Migration
             $table->decimal('iva', 10, 2);
             $table->decimal('total', 10, 2);
 
-            $table->decimal('pagado', 10, 2);
-            $table->decimal('anticipado', 10, 2);
+            $table->decimal('pagado', 10, 2)->default(0);
+            $table->decimal('anticipado', 10, 2)->default(0);
 
 
 
