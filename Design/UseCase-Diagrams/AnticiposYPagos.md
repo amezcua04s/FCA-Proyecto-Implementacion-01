@@ -22,6 +22,12 @@ rectangle pagosYAnticiposSagop{
     UC23-down.>UC17:<<Include>>
     UC23-down.>UC13:<<Include>>
 
+    UC26-left.>UC25: <<Extend>>
+    UC22-left.>UC21: <<Extend>>
+
+    UC24-left.>UC25: <<Extend>>
+    UC20-left.>UC21: <<Extend>>
+
 }
 
 fc->UC19
@@ -38,5 +44,7 @@ fc->UC26
 @enduml -->
 # Diagrama de casos de uso de Anticipos y Pagos
 ### Diagrama donde el usuario realiza el CRUD de los anticipos y pagos 
-![image](https://github.com/user-attachments/assets/44fe6368-03b4-4b50-8858-d63b4b7ebdeb)
+![image](https://github.com/user-attachments/assets/1e3b36e6-8907-4ef0-8a20-622722cced61)
+
+
 
