@@ -23,6 +23,7 @@ fc -> UC6
 
 @enduml 
 -->
-#Diagrama en el que el administrador realiza el CRUD de usuarios
+# Diagrama de caso de uso de Usuarios
+### Diagrama en el que el administrador realiza el CRUD de usuarios
 ![image](https://github.com/user-attachments/assets/1a1ee75d-6d6f-473a-b96a-a193038197e7)
 
